@@ -168,3 +168,7 @@ D:\Repos\Proyecto-Progra-avanzada\API\API\obj\Debug\API.csproj.CoreCompileInputs
 D:\Repos\Proyecto-Progra-avanzada\API\API\obj\Debug\API.csproj.CopyComplete
 D:\Repos\Proyecto-Progra-avanzada\API\API\obj\Debug\API.dll
 D:\Repos\Proyecto-Progra-avanzada\API\API\obj\Debug\API.pdb
+D:\Repos\Proyecto-Progra-avanzada\API\API\bin\EntityFramework.dll
+D:\Repos\Proyecto-Progra-avanzada\API\API\bin\EntityFramework.SqlServer.dll
+D:\Repos\Proyecto-Progra-avanzada\API\API\bin\EntityFramework.xml
+D:\Repos\Proyecto-Progra-avanzada\API\API\bin\EntityFramework.SqlServer.xml

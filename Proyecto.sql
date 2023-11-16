@@ -20,7 +20,7 @@ CREATE TABLE Usuarios (
     IDUsuario BIGINT PRIMARY KEY,
     Nombre NVARCHAR(255) NOT NULL,
     Apellidos NVARCHAR(255) NOT NULL,
-    Contraseña NVARCHAR(255) NOT NULL,
+    Contrasenna NVARCHAR(255) NOT NULL,
     CorreoElectronico NVARCHAR(255) NOT NULL,
     IDRol INT,
     FOREIGN KEY (IDRol) REFERENCES Roles(IDRol)
@@ -58,3 +58,27 @@ CREATE TABLE Venta (
     FOREIGN KEY (IDProducto) REFERENCES Producto(IDProducto)
 );
 GO
+CREATE TABLE Bitacora (
+    IDBitacora uniqueidentifier PRIMARY KEY,
+    IDUsuario int,
+    FechaEvento datetime,
+    TablaAfectada nvarchar(255),
+    TipoAccion nvarchar(50),
+    Detalles nvarchar(max)
+);
+
+
+CREATE PROCEDURE RegistrarCuentaSP
+    @Nombre NVARCHAR(250),
+	@Apellidos NVARCHAR(250),
+    @CorreoElectronico NVARCHAR(100),
+    @Contrasenna NVARCHAR(25)
+AS
+BEGIN
+    DECLARE @IDUsuario BIGINT
+
+    SELECT @IDUsuario = ISNULL(MAX(IDUsuario), 0) + 1 FROM Usuarios
+
+    INSERT INTO Usuarios (IDUsuario, Nombre, Apellidos, Contrasenna, CorreoElectronico, IDRol)
+    VALUES (@IDUsuario, @Nombre, '', @Contrasenna, @CorreoElectronico, 2) 
+END

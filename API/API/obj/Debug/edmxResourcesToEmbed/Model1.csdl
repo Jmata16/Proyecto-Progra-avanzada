@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IDCategoria" />
+    </Key>
+    <Property Name="IDCategoria" Type="Int64" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__IDCate__3E52440B" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IDProducto" />
+    </Key>
+    <Property Name="IDProducto" Type="Int64" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="IDCategoria" Type="Int64" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__IDCate__3E52440B" FromRole="Producto" ToRole="Categoria" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IDProduct__45F365D3" FromRole="Producto" ToRole="Venta" />
+    <NavigationProperty Name="Carritoes" Relationship="ProyectoModel.FK__Carrito__IDProdu__52593CB8" FromRole="Producto" ToRole="Carrito" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IDRol" />
+    </Key>
+    <Property Name="IDRol" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="ProyectoModel.FK__Usuarios__IDRol__4E88ABD4" FromRole="Role" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="IDVentas" />
+    </Key>
+    <Property Name="IDVentas" Type="Int64" Nullable="false" />
+    <Property Name="IDPedido" Type="Int64" />
+    <Property Name="IDProducto" Type="Int64" />
+    <Property Name="FechaVenta" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Venta__IDProduct__45F365D3" FromRole="Venta" ToRole="Producto" />
+    <NavigationProperty Name="Carrito" Relationship="ProyectoModel.FK__Venta__IDPedido__5535A963" FromRole="Venta" ToRole="Carrito" />
+  </EntityType>
+  <Association Name="FK__Producto__IDCate__3E52440B">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IDCategoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IDCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IDProduct__45F365D3">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IDProducto" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IDProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Ventas" EntityType="Self.Venta" />
+    <AssociationSet Name="FK__Producto__IDCate__3E52440B" Association="Self.FK__Producto__IDCate__3E52440B">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IDProduct__45F365D3" Association="Self.FK__Venta__IDProduct__45F365D3">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <FunctionImport Name="RegistrarCuentaSP">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellidos" Mode="In" Type="String" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="Contrasenna" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Bitacoras" EntityType="ProyectoModel.Bitacora" />
+    <EntitySet Name="Carritoes" EntityType="ProyectoModel.Carrito" />
+    <EntitySet Name="Usuarios" EntityType="ProyectoModel.Usuario" />
+    <AssociationSet Name="FK__Carrito__IDProdu__52593CB8" Association="ProyectoModel.FK__Carrito__IDProdu__52593CB8">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="Carrito" EntitySet="Carritoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Carrito__IDUsuar__5165187F" Association="ProyectoModel.FK__Carrito__IDUsuar__5165187F">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Carrito" EntitySet="Carritoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IDPedido__5535A963" Association="ProyectoModel.FK__Venta__IDPedido__5535A963">
+      <End Role="Carrito" EntitySet="Carritoes" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuarios__IDRol__4E88ABD4" Association="ProyectoModel.FK__Usuarios__IDRol__4E88ABD4">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="IDBitacora" />
+    </Key>
+    <Property Name="IDBitacora" Type="Guid" Nullable="false" />
+    <Property Name="IDUsuario" Type="Int32" />
+    <Property Name="FechaEvento" Type="DateTime" Precision="3" />
+    <Property Name="TablaAfectada" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TipoAccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detalles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Carrito">
+    <Key>
+      <PropertyRef Name="IDCarrito" />
+    </Key>
+    <Property Name="IDCarrito" Type="Int64" Nullable="false" />
+    <Property Name="IDUsuario" Type="Int64" />
+    <Property Name="IDProducto" Type="Int64" />
+    <Property Name="FechaCarrito" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Producto" Relationship="ProyectoModel.FK__Carrito__IDProdu__52593CB8" FromRole="Carrito" ToRole="Producto" />
+    <NavigationProperty Name="Usuario" Relationship="ProyectoModel.FK__Carrito__IDUsuar__5165187F" FromRole="Carrito" ToRole="Usuario" />
+    <NavigationProperty Name="Ventas" Relationship="ProyectoModel.FK__Venta__IDPedido__5535A963" FromRole="Carrito" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="Int64" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Contrasenna" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IDRol" Type="Int32" />
+    <NavigationProperty Name="Carritoes" Relationship="ProyectoModel.FK__Carrito__IDUsuar__5165187F" FromRole="Usuario" ToRole="Carrito" />
+    <NavigationProperty Name="Role" Relationship="ProyectoModel.FK__Usuarios__IDRol__4E88ABD4" FromRole="Usuario" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK__Carrito__IDProdu__52593CB8">
+    <End Type="ProyectoModel.Producto" Role="Producto" Multiplicity="0..1" />
+    <End Type="ProyectoModel.Carrito" Role="Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IDProducto" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="IDProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Carrito__IDUsuar__5165187F">
+    <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="ProyectoModel.Carrito" Role="Carrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="Carrito">
+        <PropertyRef Name="IDUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IDPedido__5535A963">
+    <End Type="ProyectoModel.Carrito" Role="Carrito" Multiplicity="0..1" />
+    <End Type="ProyectoModel.Venta" Role="Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carrito">
+        <PropertyRef Name="IDCarrito" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IDPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuarios__IDRol__4E88ABD4">
+    <End Type="ProyectoModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IDRol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IDRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
