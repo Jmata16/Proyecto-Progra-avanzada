@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\ProyectoProgra",
+    "\\ProyectoProgra\\Models",
     "\\ProyectoProgra\\Views",
     "\\ProyectoProgra\\Views\\Home",
     "\\ProyectoProgra\\Views\\Shared"
   ],
-  "SelectedNode": "\\ProyectoProgra\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\ProyectoProgra\\Models\\UsuarioModel.cs",
   "PreviewInSolutionExplorer": false
 }
