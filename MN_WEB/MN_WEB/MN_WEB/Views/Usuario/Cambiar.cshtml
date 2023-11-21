@@ -1,0 +1,72 @@
+﻿@model MN_WEB.Entities.UsuarioEnt
+
+@{
+    ViewBag.Title = "Cambiar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CambiarContrasenna", "Usuario", FormMethod.Post))
+{
+
+    <div class="row">
+
+        <div class="col-xl-12">
+
+            <div class="card card-default">
+
+                <div class="card-header">
+                    <h2>Cambiar Contraseña</h2>
+                </div>
+
+                @if (ViewBag.MsjPantalla != null)
+                {
+                    <div style="color:white" class="alert alert-primary" role="alert">
+                        @ViewBag.MsjPantalla
+                    </div>
+                }
+
+                <div class="card-body">
+                    <div class="media media-sm">
+                        <div class="media-body">
+                            <div class="row">
+
+                                <div class="col-lg-10">
+
+                                    <div class="d-flex mb-5">
+                                        <button type="button" class="btn btn-icon facebook mr-2">
+                                            <i class="mdi mdi-lock"></i>
+                                        </button>
+                                        @Html.TextBoxFor(m => m.Contrasenna, new { @type = "password", @class = "form-control", @placeholder = "Contraseña Actual" })
+                                    </div>
+
+                                    <div class="d-flex mb-5">
+                                        <button type="button" class="btn btn-icon google-plus mr-2">
+                                            <i class="mdi mdi-lock"></i>
+                                        </button>
+                                        @Html.TextBoxFor(m => m.ContrasennaNueva, new { @type = "password", @class = "form-control", @placeholder = "Contraseña Nueva" })
+                                    </div>
+
+                                    <div class="d-flex mb-5">
+                                        <button type="button" class="btn btn-icon vimeo mr-2">
+                                            <i class="mdi mdi-check"></i>
+                                        </button>
+                                        @Html.TextBoxFor(m => m.ConfirmarContrasenna, new { @type = "password", @class = "form-control", @placeholder = "Confirmar Contraseña" })
+                                    </div>
+
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">Actualizar Contraseña</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}

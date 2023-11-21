@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MN_WEB.Entities.ProductoEnt>
+
+@{
+    ViewBag.Title = "Principal";
+}
+
+@if (ViewBag.MsjPantalla != null)
+{
+    <div style="color:white" class="alert alert-primary" role="alert">
+        @ViewBag.MsjPantalla
+    </div>
+}
+
+<div class="row" style="margin-top:40px;">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3">
+            <div class="card" style="width: 100%;">
+
+                <img src="@item.Imagen" class="card-img-top" alt="..." width="200" height="150" />
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nombre</h5>
+                    <p class="card-text">Instructor: @item.Instructor <br> Precio: $ @item.Precio</p>
+                </div>
+                <div class="row" style="text-align:center;">
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                        <a style="font-weight:bold" href="@Url.Action("AgregarProductoCarrito","Carrito", new { q = item.IdProducto })" class="btn">Agregar</a>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" style="font-weight:bold" class="btn pasarDatosModal" data-toggle="modal" data-target="#exampleModal"
+                                data-name="@item.Nombre"
+                                data-description="@item.Descripcion"
+                                data-video="@item.Video">
+                            Ver Más
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">< id="pTitulo"></></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <textarea style="background-color:white; width:100%; resize:none; border:0px; text-align:justify; padding:10px" rows="10" disabled="disabled" id="txtDesc"></textarea>
+
+                <br/><br />
+
+                <iframe id="txtVideo" height="350" style="border:0px;padding:10px"
+                        src="">
+                </iframe>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(".pasarDatosModal").click(function () {
+        $("#pTitulo").text($(this).attr('data-name'));
+        $("#txtDesc").text($(this).attr('data-description'));
+        $("#txtVideo").attr("src", $(this).attr('data-video') );
+    })
+
+</script>

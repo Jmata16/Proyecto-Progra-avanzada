@@ -1,0 +1,67 @@
+﻿@model MN_WEB.Entities.UsuarioEnt
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("EditarUsuario", "Usuario", FormMethod.Post))
+{
+
+    <div class="row">
+
+        <div class="col-xl-12">
+
+            <div class="card card-default">
+
+                <div class="card-header">
+                    <h2>Cambiar Datos</h2>
+                </div>
+
+                @if (ViewBag.MsjPantalla != null)
+                {
+                    <div style="color:white" class="alert alert-primary" role="alert">
+                        @ViewBag.MsjPantalla
+                    </div>
+                }
+
+                <div class="card-body">
+                    <div class="media media-sm">
+                        <div class="media-body">
+                            <div class="row">
+
+                                <div class="col-lg-10">
+
+                                    @Html.HiddenFor(m => m.IdUsuario)
+
+                                    <div class="form-group col-md-12 mb-4">
+                                        @Html.TextBoxFor(m => m.Identificacion, new { @type = "text", @disabled = "true", @class = "form-control input-lg", @placeholder = "Identificación" })
+                                    </div>
+                                    <div class="form-group col-md-12 mb-4">
+                                        @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @disabled = "true", @class = "form-control input-lg", @placeholder = "Nombre" })
+                                    </div>
+                                    <div class="form-group col-md-12 mb-4">
+                                        @Html.TextBoxFor(m => m.CorreoElectronico, new { @type = "email", @class = "form-control input-lg", @placeholder = "Correo Electrónico" })
+                                    </div>
+                                    <div class="form-group col-md-12 mb-4">
+                                        @Html.DropDownListFor(m => m.IdRol, ViewBag.ListaRoles as List<SelectListItem>, new { @class = "form-control input-lg" })
+                                    </div>                                   
+
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">Actualizar Datos</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+

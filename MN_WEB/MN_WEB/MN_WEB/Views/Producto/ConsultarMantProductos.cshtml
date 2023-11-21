@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MN_WEB.Entities.ProductoEnt>
+
+@{
+    ViewBag.Title = "ConsultarUsuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-xl-12">
+
+        <div class="card card-default">
+
+            <div class="card-header">
+                <h2>Productos</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <a href="@Url.Action("Agregar","Producto")" class="btn btn-primary"> <i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar </a>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="text-align:center">
+                                <th>Nombre</th>
+                                <th>Instructor</th>
+                                <th>Precio</th>
+                                <th>Imagen</th>
+                                <th>Video</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width:20%" title="@item.Descripcion">@item.Nombre</td>
+                                    <td style="width:20%">@item.Instructor</td>
+                                    <td style="width:15%">@item.Precio</td>
+                                    <td style="width:20%"><img src="@item.Imagen" class="card-img-top" alt="..." width="150" height="100" /></td>
+                                    <td style="width:15%">@item.Video.Replace("https://www.youtube.com/embed/", "")</td>
+                                    <td style="width:10%;text-align:center">
+                                        <a href="@Url.Action("Editar","Producto", new { q = item.IdProducto })"><i class="fa fa-pencil fa-lg"></i></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            <br />
+            <br />
+
+        </div>
+    </div>
+</div>

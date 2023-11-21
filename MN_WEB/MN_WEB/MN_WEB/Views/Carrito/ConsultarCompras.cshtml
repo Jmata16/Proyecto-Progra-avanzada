@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MN_WEB.Entities.CarritoEnt>
+
+@{
+    ViewBag.Title = "VerCarritoCompras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-xl-12">
+
+        <div class="card card-default">
+
+            <div class="card-header">
+                <h2>Productos Comprados</h2>
+            </div>
+
+            @if (Model.Count() == 0)
+            {
+                <div style="color:white; text-align:center" class="alert alert-primary" role="alert">
+                    No hay Productos comprados por ahora...
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-10">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr style="text-align:center">
+                                    <th>Nombre</th>
+                                    <th>Instructor</th>
+                                    <th>Precio</th>
+                                    <th>Impuesto</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Instructor</td>
+                                        <td>@Math.Round(item.PrecioPagado, 2)</td>
+                                        <td>@Math.Round(item.Impuesto, 2)</td>
+                                        <td>@Math.Round(item.PrecioPagado + item.Impuesto, 2)</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            }
+            <br />
+            <br />
+
+        </div>
+    </div>
+</div>
+
