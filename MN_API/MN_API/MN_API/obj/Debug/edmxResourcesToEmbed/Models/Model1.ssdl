@@ -39,7 +39,6 @@
     <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Instructor" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="Imagen" Type="varchar" MaxLength="5000" Nullable="false" />
-    <Property Name="Video" Type="varchar" MaxLength="5000" Nullable="false" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>

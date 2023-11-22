@@ -4,7 +4,7 @@
 -- Date Created: 11/17/2023 18:39:31
 -- Generated from EDMX file: D:\Proyectos\Avanzada\MN_API\MN_API\Models\Model1.edmx
 -- --------------------------------------------------
-
+CREATE DATABASE GO_Proyecto;
 SET QUOTED_IDENTIFIER OFF;
 GO
 Use GO_Proyecto;
@@ -57,7 +57,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Usuario]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Usuario];
 GO
-
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
@@ -102,7 +101,6 @@ CREATE TABLE [dbo].[Producto] (
     [Precio] decimal(18,2)  NOT NULL,
     [Instructor] varchar(200)  NOT NULL,
     [Imagen] varchar(5000)  NOT NULL,
-    [Video] varchar(5000)  NOT NULL
 );
 GO
 

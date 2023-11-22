@@ -27,12 +27,12 @@ namespace MN_API.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Rol> Rol { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Bitacora> Bitacora { get; set; }
-        public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Carrito> Carrito { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     
         public virtual ObjectResult<IniciarSesion_Result> IniciarSesion(string correoElectronico, string contrasenna)
         {

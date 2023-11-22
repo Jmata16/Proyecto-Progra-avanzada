@@ -27,7 +27,6 @@ namespace MN_API.Models
         public decimal Precio { get; set; }
         public string Instructor { get; set; }
         public string Imagen { get; set; }
-        public string Video { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Carrito> Carrito { get; set; }

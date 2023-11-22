@@ -44,7 +44,6 @@
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Instructor" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Imagen" Type="varchar" MaxLength="5000" Nullable="false" />
-          <Property Name="Video" Type="varchar" MaxLength="5000" Nullable="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -175,51 +174,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GO_ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Rol">
-          <Key>
-            <PropertyRef Name="IdRol" />
-          </Key>
-          <Property Name="IdRol" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreRol" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
-        </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CorreoElectronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contrasenna" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="IdRol" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Rol" Relationship="Self.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
-          <NavigationProperty Name="Bitacora" Relationship="GO_ProyectoModel.FK_Bitacora_Usuario" FromRole="Usuario" ToRole="Bitacora" />
-          <Property Name="UsaClaveTemporal" Type="Boolean" Nullable="false" />
-          <Property Name="FechaCaducidad" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Usuario" FromRole="Usuario" ToRole="Carrito" />
-          <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Usuario" FromRole="Usuario" ToRole="Compra" />
-        </EntityType>
-        <Association Name="FK_Usuario_Rol">
-          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rol">
-              <PropertyRef Name="IdRol" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="IdRol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="GO_ProyectoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Rol" EntityType="Self.Rol" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
-            <End Role="Rol" EntitySet="Rol" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
           <FunctionImport Name="IniciarSesion" ReturnType="Collection(GO_ProyectoModel.IniciarSesion_Result)">
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
@@ -232,35 +187,11 @@
             <Parameter Name="Estado" Mode="In" Type="Boolean" />
             <Parameter Name="IdRol" Mode="In" Type="Byte" />
           </FunctionImport>
-          <EntitySet Name="Bitacora" EntityType="GO_ProyectoModel.Bitacora" />
-          <AssociationSet Name="FK_Bitacora_Usuario" Association="GO_ProyectoModel.FK_Bitacora_Usuario">
-            <End EntitySet="Usuario" Role="Usuario" />
-            <End EntitySet="Bitacora" Role="Bitacora" />
-          </AssociationSet>
           <FunctionImport Name="RegistrarBitacora">
             <Parameter Name="Origen" Mode="In" Type="String" />
             <Parameter Name="Mensaje" Mode="In" Type="String" />
             <Parameter Name="IdUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
-          <EntitySet Name="Producto" EntityType="GO_ProyectoModel.Producto" />
-          <EntitySet Name="Carrito" EntityType="GO_ProyectoModel.Carrito" />
-          <AssociationSet Name="FK_Carrito_Producto" Association="GO_ProyectoModel.FK_Carrito_Producto">
-            <End EntitySet="Producto" Role="Producto" />
-            <End EntitySet="Carrito" Role="Carrito" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Carrito_Usuario" Association="GO_ProyectoModel.FK_Carrito_Usuario">
-            <End EntitySet="Usuario" Role="Usuario" />
-            <End EntitySet="Carrito" Role="Carrito" />
-          </AssociationSet>
-          <EntitySet Name="Compra" EntityType="GO_ProyectoModel.Compra" />
-          <AssociationSet Name="FK_Compra_Producto" Association="GO_ProyectoModel.FK_Compra_Producto">
-            <End EntitySet="Producto" Role="Producto" />
-            <End EntitySet="Compra" Role="Compra" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Compra_Usuario" Association="GO_ProyectoModel.FK_Compra_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Compra" EntitySet="Compra" />
-          </AssociationSet>
           <FunctionImport Name="Registrarse1" ReturnType="Collection(Int64)">
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
@@ -269,6 +200,36 @@
             <Parameter Name="Estado" Mode="In" Type="Boolean" />
             <Parameter Name="IdRol" Mode="In" Type="Byte" />
           </FunctionImport>
+          <EntitySet Name="Bitacora" EntityType="GO_ProyectoModel.Bitacora" />
+          <EntitySet Name="Carrito" EntityType="GO_ProyectoModel.Carrito" />
+          <EntitySet Name="Compra" EntityType="GO_ProyectoModel.Compra" />
+          <EntitySet Name="Producto" EntityType="GO_ProyectoModel.Producto" />
+          <EntitySet Name="Rol" EntityType="GO_ProyectoModel.Rol" />
+          <EntitySet Name="Usuario" EntityType="GO_ProyectoModel.Usuario" />
+          <AssociationSet Name="FK_Bitacora_Usuario" Association="GO_ProyectoModel.FK_Bitacora_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carrito_Producto" Association="GO_ProyectoModel.FK_Carrito_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Carrito" EntitySet="Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carrito_Usuario" Association="GO_ProyectoModel.FK_Carrito_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Carrito" EntitySet="Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compra_Producto" Association="GO_ProyectoModel.FK_Compra_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compra_Usuario" Association="GO_ProyectoModel.FK_Compra_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Rol" Association="GO_ProyectoModel.FK_Usuario_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="IniciarSesion_Result">
           <Property Type="Int64" Name="IdUsuario" Nullable="false" />
@@ -282,74 +243,24 @@
           <Key>
             <PropertyRef Name="IdBitacora" />
           </Key>
-          <Property Name="IdBitacora" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
-          <Property Name="FechaHora" Nullable="false" Precision="3" Type="DateTime" />
-          <Property Name="Origen" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Mensaje" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="IdUsuario" Nullable="false" Type="Int64" />
+          <Property Name="IdBitacora" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Origen" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="GO_ProyectoModel.FK_Bitacora_Usuario" FromRole="Bitacora" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK_Bitacora_Usuario">
-          <End Type="GO_ProyectoModel.Usuario" Multiplicity="1" Role="Usuario" />
-          <End Type="GO_ProyectoModel.Bitacora" Multiplicity="*" Role="Bitacora" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Principal>
-            <Dependent Role="Bitacora">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Producto">
-          <Key>
-            <PropertyRef Name="IdProducto" />
-          </Key>
-          <Property Name="IdProducto" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
-          <Property Name="Nombre" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Descripcion" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Precio" Nullable="false" Precision="18" Scale="2" Type="Decimal" />
-          <Property Name="Instructor" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Imagen" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Video" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" Type="String" />
-          <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Producto" FromRole="Producto" ToRole="Carrito" />
-          <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Producto" FromRole="Producto" ToRole="Compra" />
         </EntityType>
         <EntityType Name="Carrito">
           <Key>
             <PropertyRef Name="IdCarrito" />
           </Key>
-          <Property Name="IdCarrito" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
-          <Property Name="IdUsuario" Nullable="false" Type="Int64" />
-          <Property Name="IdProducto" Nullable="false" Type="Int64" />
-          <Property Name="FechaRegistro" Nullable="false" Precision="3" Type="DateTime" />
+          <Property Name="IdCarrito" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int64" Nullable="false" />
+          <Property Name="IdProducto" Type="Int64" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Producto" Relationship="GO_ProyectoModel.FK_Carrito_Producto" FromRole="Carrito" ToRole="Producto" />
           <NavigationProperty Name="Usuario" Relationship="GO_ProyectoModel.FK_Carrito_Usuario" FromRole="Carrito" ToRole="Usuario" />
         </EntityType>
-        <Association Name="FK_Carrito_Producto">
-          <End Type="GO_ProyectoModel.Producto" Multiplicity="1" Role="Producto" />
-          <End Type="GO_ProyectoModel.Carrito" Multiplicity="*" Role="Carrito" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="IdProducto" />
-            </Principal>
-            <Dependent Role="Carrito">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Carrito_Usuario">
-          <End Type="GO_ProyectoModel.Usuario" Multiplicity="1" Role="Usuario" />
-          <End Type="GO_ProyectoModel.Carrito" Multiplicity="*" Role="Carrito" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Principal>
-            <Dependent Role="Carrito">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="IdCompra" />
@@ -362,9 +273,84 @@
           <NavigationProperty Name="Producto" Relationship="GO_ProyectoModel.FK_Compra_Producto" FromRole="Compra" ToRole="Producto" />
           <NavigationProperty Name="Usuario" Relationship="GO_ProyectoModel.FK_Compra_Usuario" FromRole="Compra" ToRole="Usuario" />
         </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Instructor" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Producto" FromRole="Producto" ToRole="Carrito" />
+          <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Producto" FromRole="Producto" ToRole="Compra" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="GO_ProyectoModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasenna" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdRol" Type="Byte" Nullable="false" />
+          <Property Name="UsaClaveTemporal" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCaducidad" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Bitacora" Relationship="GO_ProyectoModel.FK_Bitacora_Usuario" FromRole="Usuario" ToRole="Bitacora" />
+          <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Usuario" FromRole="Usuario" ToRole="Carrito" />
+          <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Usuario" FromRole="Usuario" ToRole="Compra" />
+          <NavigationProperty Name="Rol" Relationship="GO_ProyectoModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_Bitacora_Usuario">
+          <End Type="GO_ProyectoModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Bitacora" Role="Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carrito_Producto">
+          <End Type="GO_ProyectoModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Carrito" Role="Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Carrito">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carrito_Usuario">
+          <End Type="GO_ProyectoModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Carrito" Role="Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Carrito">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Compra_Producto">
-          <End Type="GO_ProyectoModel.Producto" Multiplicity="1" Role="Producto" />
-          <End Type="GO_ProyectoModel.Compra" Multiplicity="*" Role="Compra" />
+          <End Type="GO_ProyectoModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Compra" Role="Compra" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
               <PropertyRef Name="IdProducto" />
@@ -386,35 +372,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Usuario_Rol">
+          <End Type="GO_ProyectoModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GO_ProyectoModelStoreContainer" CdmEntityContainer="GO_ProyectoEntities">
-          <EntitySetMapping Name="Rol">
-            <EntityTypeMapping TypeName="GO_ProyectoModel.Rol">
-              <MappingFragment StoreEntitySet="Rol">
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="GO_ProyectoModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
-                <ScalarProperty Name="UsaClaveTemporal" ColumnName="UsaClaveTemporal" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
-                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Bitacora">
             <EntityTypeMapping TypeName="GO_ProyectoModel.Bitacora">
               <MappingFragment StoreEntitySet="Bitacora">
@@ -423,19 +398,6 @@
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
                 <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Producto">
-            <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
-              <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="Video" ColumnName="Video" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -457,6 +419,41 @@
                 <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="GO_ProyectoModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="GO_ProyectoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+                <ScalarProperty Name="UsaClaveTemporal" ColumnName="UsaClaveTemporal" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

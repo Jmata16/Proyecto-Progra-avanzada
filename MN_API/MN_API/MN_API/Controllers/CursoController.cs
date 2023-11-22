@@ -36,7 +36,6 @@ namespace MN_API.Controllers
                             Precio = item.Precio,
                             Instructor = item.Instructor,
                             Imagen = item.Imagen,
-                            Video = item.Video
                         });
                     }
                 }
@@ -64,7 +63,6 @@ namespace MN_API.Controllers
                     resp.Instructor = datos.Instructor;
                     resp.Precio = datos.Precio;
                     resp.Imagen = datos.Imagen;
-                    resp.Video = datos.Video;
                     return resp;
                 }
 
@@ -84,7 +82,6 @@ namespace MN_API.Controllers
                 tabla.Instructor = entidad.Instructor;
                 tabla.Precio = entidad.Precio;
                 tabla.Imagen = entidad.Imagen;
-                tabla.Video = entidad.Video;
 
                 bd.Producto.Add(tabla);
                 bd.SaveChanges();
@@ -128,7 +125,6 @@ namespace MN_API.Controllers
                     datos.Instructor = entidad.Instructor;
                     datos.Precio = entidad.Precio;
                     datos.Imagen = entidad.Imagen;
-                    datos.Video = entidad.Video;
                     return bd.SaveChanges();
                 }
 

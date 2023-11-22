@@ -186,7 +186,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\CarritoEnt.cs" />
-    <Compile Include="Entities\CursoEnt.cs" />
+    <Compile Include="Entities\ProductoEnt.cs" />
     <Compile Include="Entities\RolEnt.cs" />
     <Compile Include="Entities\UsuarioEnt.cs" />
     <Compile Include="Global.asax.cs">

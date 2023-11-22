@@ -1,29 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GO_ProyectoModelStoreContainer" CdmEntityContainer="GO_ProyectoEntities">
-    <EntitySetMapping Name="Rol">
-      <EntityTypeMapping TypeName="GO_ProyectoModel.Rol">
-        <MappingFragment StoreEntitySet="Rol">
-          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Usuario">
-      <EntityTypeMapping TypeName="GO_ProyectoModel.Usuario">
-        <MappingFragment StoreEntitySet="Usuario">
-          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
-          <ScalarProperty Name="UsaClaveTemporal" ColumnName="UsaClaveTemporal" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
-          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Bitacora">
       <EntityTypeMapping TypeName="GO_ProyectoModel.Bitacora">
         <MappingFragment StoreEntitySet="Bitacora">
@@ -32,19 +9,6 @@
           <ScalarProperty Name="Origen" ColumnName="Origen" />
           <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
           <ScalarProperty Name="IdBitacora" ColumnName="IdBitacora" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Producto">
-      <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
-        <MappingFragment StoreEntitySet="Producto">
-          <ScalarProperty Name="Video" ColumnName="Video" />
-          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -66,6 +30,41 @@
           <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="GO_ProyectoModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="GO_ProyectoModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="UsaClaveTemporal" ColumnName="UsaClaveTemporal" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,7 +1,40 @@
-﻿<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="aspnetTitle">Producto MIERCOLES NOCHE</h1>
-        <p class="lead">Propiedad Privada @DateTime.Now.Year</p>
+﻿<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    section {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    p.lead {
+        font-size: 1.2em;
+        color: #555;
+    }
+</style>
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle" style="display: flex; align-items: center;">
+        <img src="~/Logo/logo.png" alt="Logo de Tienda Game Over" style="max-width: 200px; height: auto; margin-right: 15px;">
+        <div style="flex: 1;">
+            <h1 id="aspnetTitle">API de Tienda Game Over</h1>
+            <p class="lead">Propiedad Privada @DateTime.Now.Year</p>
+        </div>
     </section>
-    
 </main>
