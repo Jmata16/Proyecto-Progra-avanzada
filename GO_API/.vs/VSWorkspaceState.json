@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MN_API",
-    "\\MN_API\\MN_API",
-    "\\MN_API\\MN_API\\Controllers",
-    "\\MN_API\\MN_API\\Views",
-    "\\MN_API\\MN_API\\Views\\Shared"
+    "\\GO_API"
   ],
-  "SelectedNode": "\\MN_API\\MN_API\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\GO_API\\GO_API.sln",
   "PreviewInSolutionExplorer": false
 }

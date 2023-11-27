@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MN_WEB",
-    "\\MN_WEB\\MN_WEB",
-    "\\MN_WEB\\MN_WEB\\Templates",
-    "\\MN_WEB\\MN_WEB\\Templates\\css"
+    "\\GO_WEB"
   ],
-  "SelectedNode": "\\MN_WEB\\MN_WEB\\Templates\\css\\StyleSheet.css",
+  "SelectedNode": "\\GO_WEB\\GO_WEB.sln",
   "PreviewInSolutionExplorer": false
 }
