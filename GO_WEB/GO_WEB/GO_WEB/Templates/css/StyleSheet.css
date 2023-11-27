@@ -193,7 +193,7 @@ form#girisyap input {
 }
 
 .left .yarim {
-    width: 46% !important;
+    width: 46%;
     float: left;
     margin-right: 8%;
 }

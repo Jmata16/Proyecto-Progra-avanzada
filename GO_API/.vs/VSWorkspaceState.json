@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GO_API"
+    "\\GO_API",
+    "\\GO_API\\GO_API",
+    "\\GO_API\\GO_API\\Controllers",
+    "\\GO_API\\GO_API\\Models"
   ],
-  "SelectedNode": "\\GO_API\\GO_API.sln",
+  "SelectedNode": "\\GO_API\\GO_API\\Controllers\\UsuarioController.cs",
   "PreviewInSolutionExplorer": false
 }

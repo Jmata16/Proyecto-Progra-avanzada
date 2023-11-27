@@ -340,7 +340,7 @@
     <Content Include="WebStyles\images\github\safari.png" />
     <Content Include="WebStyles\images\github\sleek.gif" />
     <Content Include="WebStyles\images\lightenning.png" />
-    <Content Include="WebStyles\images\logo.png" />
+    <Content Include="WebStyles\images\logoGO.png" />
     <Content Include="WebStyles\images\products\p1.jpg" />
     <Content Include="WebStyles\images\products\p2.jpg" />
     <Content Include="WebStyles\images\products\p3.jpg" />

@@ -121,14 +121,28 @@ namespace MN_API.Controllers
 
                     //armar el correo
                     StringBuilder mensaje = new StringBuilder();
-                    mensaje.Append("<html><head></head><body>");
-                    mensaje.Append("Estimado(a) " + datos.Nombre + "<br/><br/>");
-                    mensaje.Append("Se ha generado el siguiente código temporal para que ingrese al sistema: <b>" + password + "</b><br/><br/>");
-                    mensaje.Append("El código generado tiene 30 minutos de validez, por favor ingrese al sistema para establecer su nueva contraseña <br/><br/>");
-                    mensaje.Append("Este correo se ha generado de manera automática del el sistema <br/><br/>");
-                    mensaje.Append("Muchas Gracias <br/><br/>");
-                    mensaje.Append("<a href='https://localhost:44350/'>Sistema MN</a>");
-                    mensaje.Append("</body></html>");
+                    mensaje.Append("<html>");
+                    mensaje.Append("<head>");
+                    mensaje.Append("</head>");
+                    mensaje.Append("<body style='font-family: Arial, sans-serif;'>");
+                    mensaje.Append("<div style='text-align: center;'>");
+                    mensaje.Append("<h2>Recuperación de Contraseña</h2>");
+                    mensaje.Append("</div>");
+                    mensaje.Append("<p>Estimado(a) " + datos.Nombre + ",</p>");
+                    mensaje.Append("<p>Le informamos que se ha generado un código temporal para restablecer su contraseña en el sistema:</p>");
+                    mensaje.Append("<p style='font-size: 18px;'><b>" + password + "</b></p>");
+                    mensaje.Append("<p>Este código tiene una validez de 30 minutos. Por favor, ingrese al sistema para establecer su nueva contraseña.</p>");
+                    mensaje.Append("<p>Este correo ha sido generado de manera automática por el sistema.</p>");
+                    mensaje.Append("<br/>");
+                    mensaje.Append("<p>Atentamente,</p>");
+                    mensaje.Append("<p>Equipo de Soporte</p>");
+                    mensaje.Append("<br/>");
+                    mensaje.Append("<p>Puede acceder al sistema haciendo clic en el siguiente enlace:</p>");
+                    mensaje.Append("<a href='https://localhost:44350/'>Sistema Game Over Web</a>");
+                    mensaje.Append("</body>");
+                    mensaje.Append("</html>");
+
+
 
                     //enviar el correo
                     model.SendEmail(datos.CorreoElectronico,"Recuperar Contraseña", mensaje.ToString());

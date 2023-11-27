@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GO_WEB"
+    "\\GO_WEB",
+    "\\GO_WEB\\GO_WEB",
+    "\\GO_WEB\\GO_WEB\\Views",
+    "\\GO_WEB\\GO_WEB\\Views\\Home"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB.sln",
+  "SelectedNode": "\\GO_WEB\\GO_WEB\\Views\\Home\\Recuperar.cshtml",
   "PreviewInSolutionExplorer": false
 }
