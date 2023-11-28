@@ -17,6 +17,8 @@
         <AssociationConnector Association="GO_ProyectoModel.FK_Compra_Producto" />
         <AssociationConnector Association="GO_ProyectoModel.FK_Compra_Usuario" />
         <AssociationConnector Association="GO_ProyectoModel.FK_Usuario_Rol" />
+        <EntityTypeShape EntityType="GO_ProyectoModel.Categoria" Width="1.5" PointX="0.75" PointY="1.5" />
+        <AssociationConnector Association="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

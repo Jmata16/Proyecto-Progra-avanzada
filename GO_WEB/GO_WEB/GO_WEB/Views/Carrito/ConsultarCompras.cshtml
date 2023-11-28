@@ -32,7 +32,6 @@
                             <thead>
                                 <tr style="text-align:center">
                                     <th>Nombre</th>
-                                    <th>Instructor</th>
                                     <th>Precio</th>
                                     <th>Impuesto</th>
                                     <th>Total</th>
@@ -44,7 +43,6 @@
                                 {
                                     <tr>
                                         <td>@item.Nombre</td>
-                                        <td>@item.Instructor</td>
                                         <td>@Math.Round(item.PrecioPagado, 2)</td>
                                         <td>@Math.Round(item.Impuesto, 2)</td>
                                         <td>@Math.Round(item.PrecioPagado + item.Impuesto, 2)</td>

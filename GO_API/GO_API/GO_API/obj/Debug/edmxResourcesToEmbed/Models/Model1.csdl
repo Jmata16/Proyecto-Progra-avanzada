@@ -56,6 +56,11 @@
       <End Role="Rol" EntitySet="Rol" />
       <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
+    <EntitySet Name="Categoria" EntityType="GO_ProyectoModel.Categoria" />
+    <AssociationSet Name="FK__Producto__IdCate__412EB0B6" Association="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int64" Name="IdUsuario" Nullable="false" />
@@ -107,10 +112,12 @@
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
     <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="Instructor" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Imagen" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Producto" FromRole="Producto" ToRole="Carrito" />
     <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Producto" FromRole="Producto" ToRole="Compra" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="IdCategoria" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6" FromRole="Producto" ToRole="Categoria" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -207,6 +214,26 @@
       </Principal>
       <Dependent Role="Usuario">
         <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Producto" Relationship="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <Association Name="FK__Producto__IdCate__412EB0B6">
+    <End Type="GO_ProyectoModel.Categoria" Role="Categoria" Multiplicity="1" />
+    <End Type="GO_ProyectoModel.Producto" Role="Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

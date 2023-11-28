@@ -24,6 +24,13 @@
           <Property Name="IdProducto" Type="bigint" Nullable="false" />
           <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="IdCompra" />
@@ -42,8 +49,9 @@
           <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="5000" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Instructor" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="Imagen" Type="varchar" MaxLength="5000" Nullable="false" />
+          <Property Name="IdCategoria" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -66,7 +74,7 @@
           <Property Name="UsaClaveTemporal" Type="bit" Nullable="false" />
           <Property Name="FechaCaducidad" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Bitacora_Usuario">
+        <Association Name="FK__Bitacora__IdUsua__3C69FB99">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
           <ReferentialConstraint>
@@ -78,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Carrito_Producto">
+        <Association Name="FK__Carrito__IdProdu__440B1D61">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
           <ReferentialConstraint>
@@ -90,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Carrito_Usuario">
+        <Association Name="FK__Carrito__IdUsuar__44FF419A">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Carrito" Type="Self.Carrito" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Compra_Producto">
+        <Association Name="FK__Compra__IdProduc__47DBAE45">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Compra_Usuario">
+        <Association Name="FK__Compra__IdUsuari__48CFD27E">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +134,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuario_Rol">
+        <Association Name="FK__Producto__IdCate__412EB0B6">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__398D8EEE">
           <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,31 +161,36 @@
         <EntityContainer Name="GO_ProyectoModelStoreContainer">
           <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Carrito" EntityType="Self.Carrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Bitacora_Usuario" Association="Self.FK_Bitacora_Usuario">
+          <AssociationSet Name="FK__Bitacora__IdUsua__3C69FB99" Association="Self.FK__Bitacora__IdUsua__3C69FB99">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Bitacora" EntitySet="Bitacora" />
           </AssociationSet>
-          <AssociationSet Name="FK_Carrito_Producto" Association="Self.FK_Carrito_Producto">
+          <AssociationSet Name="FK__Carrito__IdProdu__440B1D61" Association="Self.FK__Carrito__IdProdu__440B1D61">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Carrito" EntitySet="Carrito" />
           </AssociationSet>
-          <AssociationSet Name="FK_Carrito_Usuario" Association="Self.FK_Carrito_Usuario">
+          <AssociationSet Name="FK__Carrito__IdUsuar__44FF419A" Association="Self.FK__Carrito__IdUsuar__44FF419A">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Carrito" EntitySet="Carrito" />
           </AssociationSet>
-          <AssociationSet Name="FK_Compra_Producto" Association="Self.FK_Compra_Producto">
+          <AssociationSet Name="FK__Compra__IdProduc__47DBAE45" Association="Self.FK__Compra__IdProduc__47DBAE45">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Compra" EntitySet="Compra" />
           </AssociationSet>
-          <AssociationSet Name="FK_Compra_Usuario" Association="Self.FK_Compra_Usuario">
+          <AssociationSet Name="FK__Compra__IdUsuari__48CFD27E" Association="Self.FK__Compra__IdUsuari__48CFD27E">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Compra" EntitySet="Compra" />
           </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+          <AssociationSet Name="FK__Producto__IdCate__412EB0B6" Association="Self.FK__Producto__IdCate__412EB0B6">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__398D8EEE" Association="Self.FK__Usuario__IdRol__398D8EEE">
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
@@ -230,6 +255,11 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <EntitySet Name="Categoria" EntityType="GO_ProyectoModel.Categoria" />
+          <AssociationSet Name="FK__Producto__IdCate__412EB0B6" Association="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="IniciarSesion_Result">
           <Property Type="Int64" Name="IdUsuario" Nullable="false" />
@@ -281,10 +311,12 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Instructor" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Imagen" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carrito" Relationship="GO_ProyectoModel.FK_Carrito_Producto" FromRole="Producto" ToRole="Carrito" />
           <NavigationProperty Name="Compra" Relationship="GO_ProyectoModel.FK_Compra_Producto" FromRole="Producto" ToRole="Compra" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="IdCategoria" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6" FromRole="Producto" ToRole="Categoria" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -384,6 +416,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Producto" Relationship="GO_ProyectoModel.FK__Producto__IdCate__412EB0B6" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <Association Name="FK__Producto__IdCate__412EB0B6">
+          <End Type="GO_ProyectoModel.Categoria" Role="Categoria" Multiplicity="1" />
+          <End Type="GO_ProyectoModel.Producto" Role="Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -425,8 +477,9 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -454,6 +507,14 @@
                 <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
                 <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="GO_ProyectoModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

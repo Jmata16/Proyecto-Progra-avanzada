@@ -90,8 +90,25 @@ namespace MN_WEB.Models
 
                 return 0;
             }
-        }        
+        }
+        public List<CategoriaEnt> ConsultarCategoria()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = urlWebApi + "api/ConsultarCategoria";
+                string token = HttpContext.Current.Session["TokenSesion"].ToString();
 
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    return resp.Content.ReadFromJsonAsync<List<CategoriaEnt>>().Result;
+                }
+
+                return new List<CategoriaEnt>();
+            }
+        }
         public void ActualizarRuta(ProductoEnt entidad)
         {
             using (var client = new HttpClient())

@@ -39,21 +39,28 @@
                                         @Html.TextAreaFor(m => m.Descripcion, new { @type = "text", Style = "heigth:100px", @class = "form-control input-lg", @placeholder = "Descripción" })
                                     </div>
                                     <div class="form-group col-md-12 mb-4">
-                                        @Html.TextBoxFor(m => m.Instructor, new { @type = "text", @class = "form-control input-lg", @placeholder = "Instructor" })
+                                        @Html.TextBoxFor(m => m.Stock, new { @type = "text", @class = "form-control input-lg", @placeholder = "Stock" })
                                     </div>
                                     <div class="form-group col-md-12 mb-4">
                                         @Html.TextBoxFor(m => m.Precio, new { @type = "number", @class = "form-control input-lg", @placeholder = "Precio" })
                                     </div>
+                                    @if (ViewBag.ListaCategoria != null)
+                                    {
+                                        <div class="form-group col-md-12 mb-4">
+                                            @Html.DropDownListFor(m => m.IdCategoria, ViewBag.ListaCategoria as List<SelectListItem>, new { @class = "form-control input-lg" })
+                                        </div>
+                                    }
+
 
                                     <div class="form-group col-md-12 mb-4">
                                         <input type="file" id="imagenProducto" name="imagenProducto" class="form-control" accept="image/png, image/jpg, image/jpeg">
                                     </div>
 
-                                        <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary mb-2 btn-pill">Procesar</button>
-                                        </div>
-
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mb-2 btn-pill">Procesar</button>
                                     </div>
+
+                                </div>
 
                                 </div>
                         </div>

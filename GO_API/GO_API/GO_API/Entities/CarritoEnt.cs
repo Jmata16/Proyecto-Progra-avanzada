@@ -15,7 +15,7 @@ namespace MN_API.Entities
         public DateTime FechaCompra { get; set; }
         public decimal Precio { get; set; }
         public decimal PrecioPagado { get; set; }
-        public string Instructor { get; set; }
+        public int Stock { get; set; }
         public string Nombre { get; set; }
         public decimal Impuesto { get; set; }
     }

@@ -3,9 +3,10 @@
     "",
     "\\GO_WEB",
     "\\GO_WEB\\GO_WEB",
+    "\\GO_WEB\\GO_WEB\\Controllers",
     "\\GO_WEB\\GO_WEB\\Views",
     "\\GO_WEB\\GO_WEB\\Views\\Home"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB\\Views\\Home\\Recuperar.cshtml",
+  "SelectedNode": "\\GO_WEB\\GO_WEB\\Controllers\\CursoController.cs",
   "PreviewInSolutionExplorer": false
 }

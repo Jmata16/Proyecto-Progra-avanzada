@@ -20,7 +20,17 @@ namespace MN_API.Controllers
             using (var bd = new GO_ProyectoEntities())
             {
                 var datos = (from x in bd.Producto
-                             select x).ToList();
+                             join r in bd.Categoria on x.IdCategoria equals r.IdCategoria
+                             select new{
+                                x.IdProducto,
+                                x.Nombre,
+                                x.Descripcion,
+                                x.Precio,
+                                x.Stock,
+                                x.IdCategoria,
+                                r.NombreCategoria,
+                                x.Imagen
+                             }).ToList();
 
                 List<ProductoEnt> resp = new List<ProductoEnt>();
 
@@ -34,8 +44,10 @@ namespace MN_API.Controllers
                             Nombre = item.Nombre,
                             Descripcion = item.Descripcion,
                             Precio = item.Precio,
-                            Instructor = item.Instructor,
+                            Stock = item.Stock,
                             Imagen = item.Imagen,
+                            IdCategoria = item.IdCategoria,
+                            NombreCategoria = item.NombreCategoria,
                         });
                     }
                 }
@@ -60,9 +72,10 @@ namespace MN_API.Controllers
                     resp.IdProducto = datos.IdProducto;
                     resp.Nombre = datos.Nombre;
                     resp.Descripcion = datos.Descripcion;
-                    resp.Instructor = datos.Instructor;
+                    resp.Stock = datos.Stock;
                     resp.Precio = datos.Precio;
                     resp.Imagen = datos.Imagen;
+                    resp.IdCategoria = datos.IdCategoria;
                     return resp;
                 }
 
@@ -79,9 +92,10 @@ namespace MN_API.Controllers
                 Producto tabla = new Producto();
                 tabla.Nombre = entidad.Nombre;
                 tabla.Descripcion = entidad.Descripcion;
-                tabla.Instructor = entidad.Instructor;
+                tabla.Stock = entidad.Stock;
                 tabla.Precio = entidad.Precio;
                 tabla.Imagen = entidad.Imagen;
+                tabla.IdCategoria = entidad.IdCategoria;
 
                 bd.Producto.Add(tabla);
                 bd.SaveChanges();
@@ -108,6 +122,32 @@ namespace MN_API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/ConsultarCategoria")]
+        public List<CategoriaEnt> ConsultarCategoria()
+        {
+            using (var bd = new GO_ProyectoEntities())
+            {
+                var datos = (from x in bd.Categoria
+                             select x).ToList();
+
+                List<CategoriaEnt> resp = new List<CategoriaEnt>();
+
+                if (datos.Count > 0)
+                {
+                    foreach (var item in datos)
+                    {
+                        resp.Add(new CategoriaEnt
+                        {
+                            IdCategoria = item.IdCategoria,
+                            NombreCategoria = item.NombreCategoria
+                        });
+                    }
+                }
+
+                return resp;
+            }
+        }
         [HttpPut]
         [Route("api/ActualizarProducto")]
         public int ActualizarProducto(ProductoEnt entidad)
@@ -122,9 +162,10 @@ namespace MN_API.Controllers
                 {
                     datos.Nombre = entidad.Nombre;
                     datos.Descripcion = entidad.Descripcion;
-                    datos.Instructor = entidad.Instructor;
+                    datos.Stock = entidad.Stock;
                     datos.Precio = entidad.Precio;
                     datos.Imagen = entidad.Imagen;
+                    datos.IdCategoria= entidad.IdCategoria;
                     return bd.SaveChanges();
                 }
 

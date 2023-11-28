@@ -62,11 +62,6 @@ namespace MN_API.Controllers
 
                 return null;
             }
-
-            /*using (var bd = new GO_ProyectoEntities())
-            {
-                return bd.IniciarSesion(entidad.CorreoElectronico, entidad.Contrasenna).FirstOrDefault();
-            }*/
         }
 
         [HttpPost]
@@ -88,11 +83,6 @@ namespace MN_API.Controllers
                 return bd.SaveChanges();
             }
 
-            /*using (var bd = new GO_ProyectoEntities())
-            {
-                return bd.Registrarse(entidad.CorreoElectronico, entidad.Contrasenna, entidad.Identificacion,
-                    entidad.Nombre, entidad.Estado, entidad.IdRol);
-            }*/
         }
 
         [HttpPost]

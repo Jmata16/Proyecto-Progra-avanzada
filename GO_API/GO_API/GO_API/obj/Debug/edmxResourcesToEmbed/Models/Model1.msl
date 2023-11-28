@@ -36,8 +36,9 @@
     <EntitySetMapping Name="Producto">
       <EntityTypeMapping TypeName="GO_ProyectoModel.Producto">
         <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
           <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
           <ScalarProperty Name="Precio" ColumnName="Precio" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -65,6 +66,14 @@
           <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
           <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="GO_ProyectoModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

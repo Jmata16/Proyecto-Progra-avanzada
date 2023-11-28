@@ -82,7 +82,7 @@ namespace MN_API.Controllers
                                  x.FechaRegistro,
                                  r.Precio,
                                  r.Nombre,
-                                 r.Instructor
+                                 r.Stock
                              }).ToList();
 
                 List<CarritoEnt> resp = new List<CarritoEnt>();
@@ -99,7 +99,7 @@ namespace MN_API.Controllers
                             FechaRegistro = item.FechaRegistro,
                             Precio = item.Precio,
                             Nombre = item.Nombre,
-                            Instructor = item.Instructor,
+                            Stock = item.Stock,
                             Impuesto = item.Precio * 0.13M
                         });
                     }
@@ -126,7 +126,7 @@ namespace MN_API.Controllers
                                  x.FechaCompra,
                                  x.PrecioPagado,
                                  r.Nombre,
-                                 r.Instructor
+                                 r.Stock
                              }).ToList();
 
                 List<CarritoEnt> resp = new List<CarritoEnt>();
@@ -143,7 +143,7 @@ namespace MN_API.Controllers
                             FechaCompra = item.FechaCompra,
                             PrecioPagado = item.PrecioPagado,
                             Nombre = item.Nombre,
-                            Instructor = item.Instructor,
+                            Stock = item.Stock,
                             Impuesto = item.PrecioPagado * 0.13M
                         });
                     }
