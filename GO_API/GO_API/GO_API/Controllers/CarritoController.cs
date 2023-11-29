@@ -20,30 +20,35 @@ namespace MN_API.Controllers
         {
             using (var bd = new GO_ProyectoEntities())
             {
-                var existeEnCarrito = (from x in bd.Carrito
-                                       where x.IdUsuario == entidad.IdUsuario
-                                          && x.IdProducto == entidad.IdProducto
-                                       select x).ToList();
+                var producto = bd.Producto.FirstOrDefault(p => p.IdProducto == entidad.IdProducto);
 
-                var existeEnCompras = (from x in bd.Compra
-                                       where x.IdUsuario == entidad.IdUsuario
-                                          && x.IdProducto == entidad.IdProducto
-                                       select x).ToList();
-
-                if (existeEnCarrito.Count > 0 || existeEnCompras.Count > 0)
+                if (producto != null && producto.Stock >= 1)
                 {
-                    return 0;
+
+                    Carrito tabla = new Carrito();
+                    tabla.IdUsuario = entidad.IdUsuario;
+                    tabla.IdProducto = entidad.IdProducto;
+                    tabla.FechaRegistro = entidad.FechaRegistro;
+
+                    bd.Carrito.Add(tabla);
+
+                    producto.Stock -= 1;
+
+                    bd.SaveChanges(); 
+
+                    return 1;
                 }
-
-                Carrito tabla = new Carrito();
-                tabla.IdUsuario = entidad.IdUsuario;
-                tabla.IdProducto = entidad.IdProducto;
-                tabla.FechaRegistro = entidad.FechaRegistro;
-
-                bd.Carrito.Add(tabla);
-                return bd.SaveChanges();
+                else
+                {
+  
+                    return -1;
+                }
             }
         }
+
+
+
+
 
         [HttpDelete]
         [Route("api/RemoverProductoCarrito")]
@@ -163,13 +168,14 @@ namespace MN_API.Controllers
                 var datos = (from x in bd.Carrito
                              join y in bd.Producto on x.IdProducto equals y.IdProducto
                              where x.IdUsuario == entidad.IdUsuario
-                             select new { 
-                                x.IdProducto,
-                                x.IdUsuario,
-                                y.Precio
+                             select new
+                             {
+                                 x.IdProducto,
+                                 x.IdUsuario,
+                                 y.Precio
                              }).ToList();
 
-                if(datos.Count > 0)
+                if (datos.Count > 0)
                 {
                     foreach (var item in datos)
                     {
@@ -183,8 +189,8 @@ namespace MN_API.Controllers
 
                     //Tomar los productos del carrito para borrarlos
                     var carrito = (from x in bd.Carrito
-                                 where x.IdUsuario == entidad.IdUsuario
-                                 select x).ToList();
+                                   where x.IdUsuario == entidad.IdUsuario
+                                   select x).ToList();
 
                     if (carrito.Count > 0)
                     {
@@ -200,6 +206,14 @@ namespace MN_API.Controllers
                 return 0;
             }
         }
+
+
+
+
+
+
+
+
 
     }
 }

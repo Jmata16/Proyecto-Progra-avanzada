@@ -38,7 +38,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 @foreach (var item in Model)
                                 {
                                     <tr>
@@ -51,8 +50,13 @@
                                     </tr>
                                 }
 
+                                <!-- Add a new row for displaying the count -->
+                                <tr>
+                                    <td colspan="4" style="text-align:right; font-weight:bold;">
+                                        Total de productos en el carrito: @Session["Cantidad"]
+                                    </td>
+                                </tr>
                             </tbody>
-
                         </table>
 
                         <br />

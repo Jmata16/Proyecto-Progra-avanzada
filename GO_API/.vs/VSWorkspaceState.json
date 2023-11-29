@@ -4,8 +4,9 @@
     "\\GO_API",
     "\\GO_API\\GO_API",
     "\\GO_API\\GO_API\\Controllers",
+    "\\GO_API\\GO_API\\Entities",
     "\\GO_API\\GO_API\\Models"
   ],
-  "SelectedNode": "\\GO_API\\GO_API\\Controllers\\UsuarioController.cs",
+  "SelectedNode": "\\GO_API\\GO_API\\Entities\\CategoriaEnt.cs",
   "PreviewInSolutionExplorer": false
 }

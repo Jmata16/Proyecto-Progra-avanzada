@@ -12,14 +12,11 @@
 }
 
 <div class="row" style="margin-top:40px;">
-
     @foreach (var item in Model)
     {
         <div class="col-lg-3">
             <div class="card" style="width: 100%;">
-
                 <img src="@item.Imagen" class="card-img-top" alt="..." width="200" height="200" />
-
                 <div class="card-body">
                     <h5 class="card-title">@item.Nombre</h5>
                     <p class="card-text">Stock: @item.Stock <br> Precio: $ @item.Precio <br> Categoria:  @item.NombreCategoria</p>
@@ -27,7 +24,14 @@
                 <div class="row" style="text-align:center;">
                     <div class="col-1"></div>
                     <div class="col-5">
-                        <a style="font-weight:bold" href="@Url.Action("AgregarProductoCarrito","Carrito", new { q = item.IdProducto })" class="btn">Agregar</a>
+                        @if (item.Stock > 0)
+                        {
+                            <a style="font-weight:bold" href="@Url.Action("AgregarProductoCarrito","Carrito", new { q = item.IdProducto })" class="btn">Agregar</a>
+                        }
+                        else
+                        {
+                            <p style="font-weight:bold; color:red;">No hay stock disponible</p>
+                        }
                     </div>
                     <div class="col-5">
                         <button type="button" style="font-weight:bold" class="btn pasarDatosModal" data-toggle="modal" data-target="#exampleModal"
@@ -43,6 +47,7 @@
     }
 </div>
 
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -56,7 +61,7 @@
 
                 <textarea style="background-color:white; width:100%; resize:none; border:0px; text-align:justify; padding:10px" rows="10" disabled="disabled" id="txtDesc"></textarea>
 
-                <br/><br />
+                <br /><br />
 
                 <iframe id="txtVideo" height="350" style="border:0px;padding:10px"
                         src="">
@@ -73,7 +78,7 @@
     $(".pasarDatosModal").click(function () {
         $("#pTitulo").text($(this).attr('data-name'));
         $("#txtDesc").text($(this).attr('data-description'));
-        $("#txtVideo").attr("src", $(this).attr('data-video') );
+        $("#txtVideo").attr("src", $(this).attr('data-video'));
     })
 
 </script>

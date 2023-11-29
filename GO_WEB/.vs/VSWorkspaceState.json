@@ -5,8 +5,9 @@
     "\\GO_WEB\\GO_WEB",
     "\\GO_WEB\\GO_WEB\\Controllers",
     "\\GO_WEB\\GO_WEB\\Views",
+    "\\GO_WEB\\GO_WEB\\Views\\Carrito",
     "\\GO_WEB\\GO_WEB\\Views\\Home"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB\\Controllers\\CursoController.cs",
+  "SelectedNode": "\\GO_WEB\\GO_WEB\\Views\\Home\\Principal.cshtml",
   "PreviewInSolutionExplorer": false
 }

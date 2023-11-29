@@ -111,6 +111,9 @@ namespace MN_WEB.Models
             }
         }
 
-
+        internal void ActualizarCarrito(List<CarritoEnt> carrito)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

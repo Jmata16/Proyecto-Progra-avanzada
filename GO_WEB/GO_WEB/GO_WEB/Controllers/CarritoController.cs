@@ -28,16 +28,9 @@ namespace MN_WEB.Controllers
             Session["SubTotal"] = datos.Sum(x => x.Precio);
             Session["Total"] = datos.Sum(x => x.Precio) + (datos.Sum(x => x.Precio) * 0.13M);
 
-            if (resp > 0)
-            {
+
+
                 return RedirectToAction("Principal", "Home");
-            }
-            else
-            {
-                var Productos = modelProductos.ConsultarProductos();
-                ViewBag.MsjPantalla = "El Producto ya fue comprado o agregado a su carrito de compras";
-                return View("../Home/Principal", Productos);
-            }
             
         }
 
