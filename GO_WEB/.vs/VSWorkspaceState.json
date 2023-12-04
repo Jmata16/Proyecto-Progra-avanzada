@@ -3,11 +3,12 @@
     "",
     "\\GO_WEB",
     "\\GO_WEB\\GO_WEB",
+    "\\GO_WEB\\GO_WEB\\Controllers",
     "\\GO_WEB\\GO_WEB\\Views",
     "\\GO_WEB\\GO_WEB\\Views\\Carrito",
     "\\GO_WEB\\GO_WEB\\Views\\Home",
     "\\GO_WEB\\GO_WEB\\Views\\Shared"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB.sln",
+  "SelectedNode": "\\GO_WEB\\GO_WEB\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
