@@ -1,4 +1,9 @@
 -- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
+-- --------------------------------------------------
+-- Date Created: 11/17/2023 18:39:31
+-- Generated from EDMX file: D:\Proyectos\Avanzada\GO_API\GO_API\Models\Model1.edmx
+=======
 -- Crear base de datos
 -- --------------------------------------------------
 CREATE DATABASE GO_Proyecto;
@@ -97,6 +102,41 @@ VALUES ('user@example.com', 'user_password', '987654321', 'Normal User', 1, (SEL
 
 INSERT INTO [dbo].[Producto] ([Nombre], [Descripcion], [Precio], [Stock], [Imagen], [IdCategoria])
 VALUES ('Logitech g502', 'Mouse para juegos de alto desempeño', 39.99, 100, '\images\1.png', 4);
+
+SET IDENTITY_INSERT [dbo].[Bitacora] ON 
+GO
+INSERT [dbo].[Bitacora] ([IdBitacora], [FechaHora], [Origen], [Mensaje], [IdUsuario], [DireccionIP]) VALUES (1, CAST(N'2023-08-17T19:48:35.830' AS DateTime), N'Usuario', N'Se presentó un inconveniente.', 8, N'::1')
+GO
+INSERT [dbo].[Bitacora] ([IdBitacora], [FechaHora], [Origen], [Mensaje], [IdUsuario], [DireccionIP]) VALUES (2, CAST(N'2023-08-17T19:50:54.360' AS DateTime), N'Usuario', N'Divide by zero error encountered.', 8, N'::1')
+GO
+INSERT [dbo].[Bitacora] ([IdBitacora], [FechaHora], [Origen], [Mensaje], [IdUsuario], [DireccionIP]) VALUES (3, CAST(N'2023-08-17T19:52:33.030' AS DateTime), N'Usuario - Editar', N'Divide by zero error encountered.', 8, N'::1')
+GO
+SET IDENTITY_INSERT [dbo].[Bitacora] OFF
+GO
+
+CREATE PROCEDURE [dbo].[REGISTRAR_ERROR]
+	@Origen      VARCHAR(255),
+    @Mensaje     VARCHAR(5000),
+    @IdUsuario   BIGINT,
+    @DireccionIP VARCHAR(50)
+AS
+BEGIN
+
+	INSERT INTO dbo.Bitacora
+           (FechaHora,
+            Origen,
+            Mensaje,
+            IdUsuario,
+            DireccionIP)
+     VALUES
+           (GETDATE(),
+            @Origen,
+            @Mensaje,
+            @IdUsuario,
+            @DireccionIP)
+
+END
+GO
 
 
 INSERT INTO [dbo].[Producto] ([Nombre], [Descripcion], [Precio], [Stock], [Imagen], [IdCategoria])
