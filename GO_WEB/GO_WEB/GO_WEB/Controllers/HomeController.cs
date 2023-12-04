@@ -12,9 +12,15 @@ namespace MN_WEB.Controllers
         ProductoModel modelProductos = new ProductoModel();
         CarritoModel modelCarrito = new CarritoModel();
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult IniciarSesion()
         {
             return View();
         }
@@ -52,6 +58,7 @@ namespace MN_WEB.Controllers
 
 
 
+
         [HttpGet]
         public ActionResult Registro()
         {
@@ -67,7 +74,7 @@ namespace MN_WEB.Controllers
             var resp = model.Registrarse(entidad);
 
             if (resp > 0)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("IniciarSesion", "Home");
             else
             {
                 ViewBag.MsjPantalla = "No se ha podido registrar su información";

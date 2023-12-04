@@ -34,14 +34,16 @@ CREATE TABLE [dbo].[Usuario] (
 );
 
 CREATE TABLE [dbo].[Bitacora] (
-    [IdBitacora] bigint IDENTITY(1,1) NOT NULL,
-    [FechaHora] datetime  NOT NULL,
-    [Origen] varchar(5000)  NOT NULL,
-    [Mensaje] varchar(5000)  NOT NULL,
-    [IdUsuario] bigint  NOT NULL,
+    [IdBitacora] BIGINT IDENTITY(1,1) NOT NULL,
+    [FechaHora] DATETIME NOT NULL,
+    [Origen] VARCHAR(255) NOT NULL,
+    [Mensaje] VARCHAR(5000) NOT NULL,
+    [IdUsuario] BIGINT NOT NULL,
+    [DireccionIP] VARCHAR(50) NOT NULL,
     PRIMARY KEY CLUSTERED ([IdBitacora] ASC),
     FOREIGN KEY ([IdUsuario]) REFERENCES [dbo].[Usuario] ([IdUsuario]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
+
 
 CREATE TABLE [dbo].[Categoria] (
     [IdCategoria] tinyint IDENTITY(1,1) NOT NULL,

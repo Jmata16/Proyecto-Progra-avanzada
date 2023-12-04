@@ -56,19 +56,28 @@ namespace MN_API.Controllers
         {
             using (var bd = new GO_ProyectoEntities())
             {
-                var Producto = (from x in bd.Carrito
-                             where x.IdCarrito == q
-                             select x).FirstOrDefault();
+                var carritoProducto = (from x in bd.Carrito
+                                       where x.IdCarrito == q
+                                       select x).FirstOrDefault();
 
-                if (Producto != null)
+                if (carritoProducto != null)
                 {
-                    bd.Carrito.Remove(Producto);
+                    var producto = bd.Producto.FirstOrDefault(p => p.IdProducto == carritoProducto.IdProducto);
+
+                    if (producto != null)
+                    {
+                        
+                        producto.Stock += 1;
+                    }
+
+                    bd.Carrito.Remove(carritoProducto);
                     return bd.SaveChanges();
                 }
 
                 return 0;
             }
         }
+
 
         [HttpGet]
         [Route("api/ConsultarCarrito")]
@@ -187,7 +196,7 @@ namespace MN_API.Controllers
                         bd.Compra.Add(comp);
                     }
 
-                    //Tomar los productos del carrito para borrarlos
+                    
                     var carrito = (from x in bd.Carrito
                                    where x.IdUsuario == entidad.IdUsuario
                                    select x).ToList();

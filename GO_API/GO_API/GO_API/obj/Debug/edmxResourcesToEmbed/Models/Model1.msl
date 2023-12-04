@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Bitacora">
       <EntityTypeMapping TypeName="GO_ProyectoModel.Bitacora">
         <MappingFragment StoreEntitySet="Bitacora">
+          <ScalarProperty Name="DireccionIP" ColumnName="DireccionIP" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
           <ScalarProperty Name="Origen" ColumnName="Origen" />
@@ -77,5 +78,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REGISTRAR_ERROR" FunctionName="GO_ProyectoModel.Store.REGISTRAR_ERROR" />
   </EntityContainerMapping>
 </Mapping>

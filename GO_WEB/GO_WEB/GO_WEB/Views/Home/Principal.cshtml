@@ -19,7 +19,7 @@
                 <img src="@item.Imagen" class="card-img-top" alt="..." width="200" height="200" />
                 <div class="card-body">
                     <h5 class="card-title">@item.Nombre</h5>
-                    <p class="card-text">Stock: @item.Stock <br> Precio: $ @item.Precio <br> Categoria:  @item.NombreCategoria</p>
+                    <p class="card-text">Disponibles : @item.Stock <br> Precio: $ @item.Precio <br> Categoria:  @item.NombreCategoria</p>
                 </div>
                 <div class="row" style="text-align:center;">
                     <div class="col-1"></div>
@@ -30,7 +30,7 @@
                         }
                         else
                         {
-                            <p style="font-weight:bold; color:red;">No hay stock disponible</p>
+                            <p style="font-weight:bold; color:red;">Producto Agotado</p>
                         }
                     </div>
                     <div class="col-5">

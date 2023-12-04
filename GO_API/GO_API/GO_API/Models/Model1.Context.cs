@@ -122,5 +122,26 @@ namespace MN_API.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("Registrarse1", correoElectronicoParameter, contrasennaParameter, identificacionParameter, nombreParameter, estadoParameter, idRolParameter);
         }
+    
+        public virtual int REGISTRAR_ERROR(string origen, string mensaje, Nullable<long> idUsuario, string direccionIP)
+        {
+            var origenParameter = origen != null ?
+                new ObjectParameter("Origen", origen) :
+                new ObjectParameter("Origen", typeof(string));
+    
+            var mensajeParameter = mensaje != null ?
+                new ObjectParameter("Mensaje", mensaje) :
+                new ObjectParameter("Mensaje", typeof(string));
+    
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(long));
+    
+            var direccionIPParameter = direccionIP != null ?
+                new ObjectParameter("DireccionIP", direccionIP) :
+                new ObjectParameter("DireccionIP", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("REGISTRAR_ERROR", origenParameter, mensajeParameter, idUsuarioParameter, direccionIPParameter);
+        }
     }
 }

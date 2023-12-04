@@ -21,7 +21,7 @@ namespace MN_WEB.Models
             using (var client = new HttpClient())
             {
                 string url = urlWebApi + "api/IniciarSesion";
-                JsonContent body = JsonContent.Create(entidad); //serializar
+                JsonContent body = JsonContent.Create(entidad); 
 
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
@@ -39,7 +39,7 @@ namespace MN_WEB.Models
             using (var client = new HttpClient())
             {
                 string url = urlWebApi + "api/Registrarse";
-                JsonContent body = JsonContent.Create(entidad); //serializar
+                JsonContent body = JsonContent.Create(entidad); 
 
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
@@ -57,7 +57,7 @@ namespace MN_WEB.Models
             using (var client = new HttpClient())
             {
                 string url = urlWebApi + "api/RecuperarContrasenna";
-                JsonContent body = JsonContent.Create(entidad); //serializar
+                JsonContent body = JsonContent.Create(entidad); 
 
                 HttpResponseMessage resp = client.PostAsync(url, body).Result;
 
@@ -76,8 +76,7 @@ namespace MN_WEB.Models
             {
                 string url = urlWebApi + "api/CambiarContrasenna";
                 string token = HttpContext.Current.Session["TokenSesion"].ToString();
-                JsonContent body = JsonContent.Create(entidad); //serializar
-
+                JsonContent body = JsonContent.Create(entidad); 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
@@ -134,8 +133,7 @@ namespace MN_WEB.Models
             {
                 string url = urlWebApi + "api/CambiarEstado";
                 string token = HttpContext.Current.Session["TokenSesion"].ToString();
-                JsonContent body = JsonContent.Create(entidad); //serializar
-
+                JsonContent body = JsonContent.Create(entidad);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;
 
@@ -173,7 +171,7 @@ namespace MN_WEB.Models
             {
                 string url = urlWebApi + "api/EditarUsuario";
                 string token = HttpContext.Current.Session["TokenSesion"].ToString();
-                JsonContent body = JsonContent.Create(entidad); //serializar
+                JsonContent body = JsonContent.Create(entidad); 
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage resp = client.PutAsync(url, body).Result;

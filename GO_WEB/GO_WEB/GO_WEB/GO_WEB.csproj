@@ -182,7 +182,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
-    <Compile Include="Controllers\CursoController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\CarritoEnt.cs" />
@@ -194,7 +194,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CarritoModel.cs" />
-    <Compile Include="Models\CursoModel.cs" />
+    <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Templates\css\StyleSheet.css" />
@@ -1466,7 +1466,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout - Inicio.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Home\Principal.cshtml" />
@@ -1524,6 +1523,8 @@
     <Content Include="WebStyles\plugins\owl-carousel\README.md" />
     <Content Include="WebStyles\plugins\syotimer\jquery.syotimer.min.js.map" />
     <Content Include="WebStyles\plugins\toaster\toastr.js.map" />
+    <Content Include="Views\Home\IniciarSesion.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

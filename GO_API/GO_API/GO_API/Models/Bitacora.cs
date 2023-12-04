@@ -19,6 +19,7 @@ namespace MN_API.Models
         public string Origen { get; set; }
         public string Mensaje { get; set; }
         public long IdUsuario { get; set; }
+        public string DireccionIP { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

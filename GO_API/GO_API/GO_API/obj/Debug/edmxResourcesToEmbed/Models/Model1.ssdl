@@ -6,9 +6,10 @@
     </Key>
     <Property Name="IdBitacora" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FechaHora" Type="datetime" Nullable="false" />
-    <Property Name="Origen" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="Origen" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Mensaje" Type="varchar" MaxLength="5000" Nullable="false" />
     <Property Name="IdUsuario" Type="bigint" Nullable="false" />
+    <Property Name="DireccionIP" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Carrito">
     <Key>
@@ -69,7 +70,7 @@
     <Property Name="UsaClaveTemporal" Type="bit" Nullable="false" />
     <Property Name="FechaCaducidad" Type="datetime2" Precision="7" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Bitacora__IdUsua__3C69FB99">
+  <Association Name="FK__Bitacora__IdUsua__4BAC3F29">
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
     <ReferentialConstraint>
@@ -153,6 +154,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="REGISTRAR_ERROR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Origen" Type="varchar" Mode="In" />
+    <Parameter Name="Mensaje" Type="varchar" Mode="In" />
+    <Parameter Name="IdUsuario" Type="bigint" Mode="In" />
+    <Parameter Name="DireccionIP" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="GO_ProyectoModelStoreContainer">
     <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Carrito" EntityType="Self.Carrito" Schema="dbo" store:Type="Tables" />
@@ -161,7 +168,7 @@
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Bitacora__IdUsua__3C69FB99" Association="Self.FK__Bitacora__IdUsua__3C69FB99">
+    <AssociationSet Name="FK__Bitacora__IdUsua__4BAC3F29" Association="Self.FK__Bitacora__IdUsua__4BAC3F29">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Bitacora" EntitySet="Bitacora" />
     </AssociationSet>

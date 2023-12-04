@@ -5,8 +5,9 @@
     "\\GO_WEB\\GO_WEB",
     "\\GO_WEB\\GO_WEB\\Views",
     "\\GO_WEB\\GO_WEB\\Views\\Carrito",
-    "\\GO_WEB\\GO_WEB\\Views\\Home"
+    "\\GO_WEB\\GO_WEB\\Views\\Home",
+    "\\GO_WEB\\GO_WEB\\Views\\Shared"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB\\Views\\Home\\Principal.cshtml",
+  "SelectedNode": "\\GO_WEB\\GO_WEB.sln",
   "PreviewInSolutionExplorer": false
 }
