@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace MN_API.Areas.HelpPage.ModelDescriptions
+namespace GO_API.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

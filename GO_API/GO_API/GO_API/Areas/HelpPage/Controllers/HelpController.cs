@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using MN_API.Areas.HelpPage.ModelDescriptions;
-using MN_API.Areas.HelpPage.Models;
+using GO_API.Areas.HelpPage.ModelDescriptions;
+using GO_API.Areas.HelpPage.Models;
 
-namespace MN_API.Areas.HelpPage.Controllers
+namespace GO_API.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

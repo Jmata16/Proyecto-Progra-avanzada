@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MN_WEB.Entities
+namespace GO_WEB.Entities
 {
     public class UsuarioEnt
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MN_WEB
+namespace GO_WEB
 {
     public class RouteConfig
     {

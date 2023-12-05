@@ -6,12 +6,12 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.Web.Http;
-using MN_API.Entities;
-using MN_API.Models;
+using GO_API.Entities;
+using GO_API.Models;
 using System.Web.Security;
-using MN_API.App_Start;
+using GO_API.App_Start;
 
-namespace MN_API.Controllers
+namespace GO_API.Controllers
 {
     [Authorize]
     public class UsuarioController : ApiController

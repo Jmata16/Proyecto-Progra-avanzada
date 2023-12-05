@@ -1,4 +1,4 @@
-﻿using MN_WEB.Entities;
+﻿using GO_WEB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Web;
 using System.Configuration;
 using System.Net.Http.Headers;
 
-namespace MN_WEB.Models
+namespace GO_WEB.Models
 {
     public class CarritoModel
     {

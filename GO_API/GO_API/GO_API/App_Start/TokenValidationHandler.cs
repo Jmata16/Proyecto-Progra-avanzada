@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Web;
 
-namespace MN_API.App_Start
+namespace GO_API.App_Start
 {
     public class TokenValidationHandler : DelegatingHandler
     {

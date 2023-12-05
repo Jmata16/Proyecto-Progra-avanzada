@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MN_API.Models
+namespace GO_API.Models
 {
     using System;
     

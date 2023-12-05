@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace MN_API.Areas.HelpPage.ModelDescriptions
+namespace GO_API.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 
-namespace MN_API.Models
+namespace GO_API.Models
 {
     public class generales
     {

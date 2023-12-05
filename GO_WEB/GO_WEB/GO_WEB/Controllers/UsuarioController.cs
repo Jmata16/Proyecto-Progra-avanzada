@@ -1,12 +1,12 @@
-﻿using MN_WEB.Entities;
-using MN_WEB.Models;
+﻿using GO_WEB.Entities;
+using GO_WEB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MN_WEB.Controllers
+namespace GO_WEB.Controllers
 {
     public class UsuarioController : Controller
     {

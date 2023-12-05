@@ -1,5 +1,5 @@
-﻿using MN_API.Entities;
-using MN_API.Models;
+﻿using GO_API.Entities;
+using GO_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.UI.WebControls;
 
-namespace MN_API.Controllers
+namespace GO_API.Controllers
 {
     [Authorize]
     public class CarritoController : ApiController

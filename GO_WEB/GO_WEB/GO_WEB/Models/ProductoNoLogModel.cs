@@ -1,4 +1,4 @@
-﻿using MN_WEB.Entities;
+﻿using GO_WEB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Web;
 
-namespace MN_WEB.Models
+namespace GO_WEB.Models
 {
     public class ProductoNoLogModel
     {

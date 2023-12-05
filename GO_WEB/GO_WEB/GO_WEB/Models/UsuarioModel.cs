@@ -1,4 +1,4 @@
-﻿using MN_WEB.Entities;
+﻿using GO_WEB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace MN_WEB.Models
+namespace GO_WEB.Models
 {
     public class UsuarioModel
     {

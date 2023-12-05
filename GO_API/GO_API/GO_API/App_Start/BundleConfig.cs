@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace MN_API
+namespace GO_API
 {
     public class BundleConfig
     {

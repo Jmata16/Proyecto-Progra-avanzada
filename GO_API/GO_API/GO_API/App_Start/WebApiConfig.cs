@@ -1,10 +1,10 @@
-﻿using MN_API.App_Start;
+﻿using GO_API.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace MN_API
+namespace GO_API
 {
     public static class WebApiConfig
     {

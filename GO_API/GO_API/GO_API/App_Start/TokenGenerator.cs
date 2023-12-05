@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 
-namespace MN_API.App_Start
+namespace GO_API.App_Start
 {
     public class TokenGenerator
     {
