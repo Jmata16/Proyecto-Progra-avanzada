@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductoNoLogController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\BitacoraEnt.cs" />
     <Compile Include="Entities\CarritoEnt.cs" />

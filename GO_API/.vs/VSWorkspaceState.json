@@ -7,6 +7,6 @@
     "\\GO_API\\GO_API\\Entities",
     "\\GO_API\\GO_API\\Models"
   ],
-  "SelectedNode": "\\GO_API\\GO_API.sln",
+  "SelectedNode": "\\GO_API\\GO_API\\Controllers\\ProductoController.cs",
   "PreviewInSolutionExplorer": false
 }

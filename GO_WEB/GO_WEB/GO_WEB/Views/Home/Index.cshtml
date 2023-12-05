@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MN_WEB.Entities.ProductoEnt>
 
 @{
-    ViewBag.Title = "Principal";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout - Inicio.cshtml";
 }
 
@@ -38,8 +38,6 @@
 
                 <div class="sidebar-left" data-simplebar style="height: 100%;">
                     <ul class="nav sidebar-inner" id="sidebar-menu">
-
-
                     </ul>
                 </div>
             </div>
@@ -51,15 +49,21 @@
             <header class="main-header" id="header">
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
 
+                    <button id="sidebar-toggler" class="sidebar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+
+                    <span class="page-title"></span>
+
                     <div class="navbar-right ">
                         <div class="search-form">
                             
                         </div>
 
 
-                        <i class="nav navbar-nav">
-                            <a href="@Url.Action("IniciarSesion","Home")" class="btn">Iniciar Sesion o Registrarse</a>
-                        </i>
+                        <a class="nav navbar-nav">
+                                <a href="@Url.Action("IniciarSesion","Home")">Iniciar Sesion o Registrarse</a>
+                        </a>
                     </div>
                 </nav>
             </header>
@@ -67,7 +71,26 @@
             <div class="content-wrapper">
                 <div class="content">
 
-
+                    <div class="row" style="margin-top:40px;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-3">
+                                <div class="card" style="width: 100%;">
+                                    <img src="@item.Imagen" class="card-img-top" alt="..." width="200" height="200" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Nombre</h5>
+                                        <p class="card-text">Disponibles : @item.Stock <br> Precio: $ @item.Precio <br> Categoria:  @item.NombreCategoria</p>
+                                    </div>
+                                    <div class="row" style="text-align:center;">
+                                        <div class="col-1"></div>
+                                        <div class="col-5">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br /><br />
+                            </div>
+                        }
+                    </div>
 
                 </div>
             </div>
@@ -92,10 +115,6 @@
     <script src="~/WebStyles/js/chart.js"></script>
     <script src="~/WebStyles/js/map.js"></script>
     <script src="~/WebStyles/js/custom.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>

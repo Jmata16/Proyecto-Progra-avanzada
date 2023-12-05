@@ -11,12 +11,14 @@ namespace MN_WEB.Controllers
         UsuarioModel model = new UsuarioModel();
         ProductoModel modelProductos = new ProductoModel();
         CarritoModel modelCarrito = new CarritoModel();
+        ProductoNoLogModel modelProductoNoLogModel = new ProductoNoLogModel();
+
 
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
         }
 
         [HttpGet]
@@ -24,7 +26,6 @@ namespace MN_WEB.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult IniciarSesion(UsuarioEnt entidad)
         {
@@ -46,13 +47,13 @@ namespace MN_WEB.Controllers
                 else
                 {
                     ViewBag.MsjPantalla = "No se ha podido validar su información";
-                    return View("Index");
+                    return View("IniciarSesion");
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.MsjPantalla = "Consulta con el administrador del sistema";
-                return View("Index");
+                ViewBag.MsjPantalla = "Consulta con el administrador del sistema: " + ex.Message;
+                return View("IniciarSesion");
             }
         }
 
