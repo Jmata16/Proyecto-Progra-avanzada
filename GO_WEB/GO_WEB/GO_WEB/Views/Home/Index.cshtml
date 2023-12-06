@@ -189,20 +189,20 @@
         <br /><br />
         <br /><br />
 
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-3 mb-4">
-                    <div class="card h-100">
-                        <img src="@item.Imagen" class="card-img-top custom-card-img" alt="..." />
-                        <div class="card-body border-top">
-                            <h5 class="card-title">@item.Nombre</h5>
-                            <p class="card-text">Disponibles: @item.Stock <br> Precio: $@item.Precio <br> Categoria: @item.NombreCategoria</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
+              <div class="row">
+                  @foreach (var item in Model.Take(4))
+                  {
+                      <div class="col-lg-3 mb-4">
+                          <div class="card h-100">
+                              <img src="@item.Imagen" class="card-img-top custom-card-img" alt="..." />
+                              <div class="card-body border-top">
+                                  <h5 class="card-title">@item.Nombre</h5>
+                                  <p class="card-text">Disponibles: @item.Stock <br> Precio: $@item.Precio <br> Categoria: @item.NombreCategoria</p>
+                              </div>
+                          </div>
+                      </div>
+                  }
+              </div>
 
 
 

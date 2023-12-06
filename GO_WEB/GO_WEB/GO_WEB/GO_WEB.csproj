@@ -1510,7 +1510,6 @@
     <Content Include="Views\Carrito\ConsultarCompras.cshtml" />
     <Content Include="Views\Producto\ConsultarMantProductos.cshtml" />
     <Content Include="Views\Producto\Agregar.cshtml" />
-    <Content Include="Views\Producto\Editar.cshtml" />
     <Content Include="Templates\webfonts\fa-brands-400.eot" />
     <Content Include="Templates\webfonts\fa-brands-400.ttf" />
     <Content Include="Templates\webfonts\fa-brands-400.woff" />
@@ -1559,10 +1558,10 @@
     <Content Include="Views\Home\IniciarSesion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ShowProductos.cshtml" />
+    <Content Include="Views\Producto\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProdcutoNoLog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -1,9 +1,5 @@
 ﻿@model GO_WEB.Entities.ProductoEnt
 
-@{
-    ViewBag.Title = "Editar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 @using (Html.BeginForm("EditarProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -64,7 +60,7 @@
 
                                 </div>
 
-                                </div>
+                            </div>
                         </div>
                     </div>
 

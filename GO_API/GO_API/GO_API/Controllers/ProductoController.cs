@@ -21,15 +21,16 @@ namespace GO_API.Controllers
             {
                 var datos = (from x in bd.Producto
                              join r in bd.Categoria on x.IdCategoria equals r.IdCategoria
-                             select new{
-                                x.IdProducto,
-                                x.Nombre,
-                                x.Descripcion,
-                                x.Precio,
-                                x.Stock,
-                                x.IdCategoria,
-                                r.NombreCategoria,
-                                x.Imagen
+                             select new
+                             {
+                                 x.IdProducto,
+                                 x.Nombre,
+                                 x.Descripcion,
+                                 x.Precio,
+                                 x.Stock,
+                                 x.IdCategoria,
+                                 r.NombreCategoria,
+                                 x.Imagen
                              }).ToList();
 
                 List<ProductoEnt> resp = new List<ProductoEnt>();
@@ -55,6 +56,34 @@ namespace GO_API.Controllers
                 return resp;
             }
         }
+
+        [HttpGet]
+        [Route("api/ConsultarProducto")]
+        public ProductoEnt ConsultarProducto(long q)
+        {
+            using (var bd = new GO_ProyectoEntities())
+            {
+                var datos = (from x in bd.Producto
+                             where x.IdProducto == q
+                             select x).FirstOrDefault();
+
+                if (datos != null)
+                {
+                    ProductoEnt resp = new ProductoEnt();
+                    resp.IdProducto = datos.IdProducto;
+                    resp.Nombre = datos.Nombre;
+                    resp.Descripcion = datos.Descripcion;
+                    resp.Stock = datos.Stock;
+                    resp.Precio = datos.Precio;
+                    resp.Imagen = datos.Imagen;
+                    resp.IdCategoria = datos.IdCategoria;
+                    return resp;
+                }
+
+                return null;
+            }
+        }
+
         [HttpPost]
         [Route("api/RegistrarProducto")]
         public long RegistrarProducto(ProductoEnt entidad)
@@ -137,7 +166,7 @@ namespace GO_API.Controllers
                     datos.Stock = entidad.Stock;
                     datos.Precio = entidad.Precio;
                     datos.Imagen = entidad.Imagen;
-                    datos.IdCategoria= entidad.IdCategoria;
+                    datos.IdCategoria = entidad.IdCategoria;
                     return bd.SaveChanges();
                 }
 
