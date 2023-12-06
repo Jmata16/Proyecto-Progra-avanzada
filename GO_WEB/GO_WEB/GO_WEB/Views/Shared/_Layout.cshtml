@@ -1,147 +1,272 @@
 ﻿<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MN WEB</title>
+    <title>Game Over eCommerce</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="~/Templates/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Templates/css/templatemo.css">
+    <link rel="stylesheet" href="~/Templates/css/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="~/Templates/css/fontawesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
     <link href="~/WebStyles/plugins/material/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="~/WebStyles/plugins/simplebar/simplebar.css" rel="stylesheet" />
-    <link href="~/WebStyles/plugins/nprogress/nprogress.css" rel="stylesheet" />
-    <link href="~/WebStyles/css/style.css" id="main-css-href" rel="stylesheet" />
     <script src="~/WebStyles/plugins/nprogress/nprogress.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .custom-card-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .center-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-item:hover {
+                background-color: #ddd;
+            }
+    </style>
 </head>
 
-
-<body class="navbar-fixed sidebar-fixed" id="body">
-
-    <div class="wrapper">
-
-        @*Menú Principal*@
-        <aside class="left-sidebar sidebar-dark" id="left-sidebar">
-            <div id="sidebar" class="sidebar sidebar-with-footer">
-                <div class="app-brand">
-                    <a href="@Url.Action("Principal","Home")">
-                        <img src="~/WebStyles/images/logoGO.png" alt="Mono">
-                    </a>
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="">Gameover@company.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
+                <div class="nav-item dropdown d-none d-lg-inline-block">
+                    <a class="d-none d-lg-inline-block dropdown-toggle text-white text-decoration-none" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-none d-lg-inline-block">@Session["NombreSesion"].ToString()</span>
+                        @Session["RolSesion"].ToString()
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Cambiar","Usuario")">
+                            <i class="mdi mdi-account-outline"></i>
+                            Cambiar Contraseña
+                        </a>
+                        <a class="dropdown-item" href="@Url.Action("CerrarSesion","Usuario")">
+                            <i class="mdi mdi-logout"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow mb-4">
+        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            Game Over
+        </a>
+        <div class="container d-flex justify-content-between align-items-center">
 
-                <div class="sidebar-left" data-simplebar style="height: 100%;">
-                    <ul class="nav sidebar-inner" id="sidebar-menu">
-
-                        @if (Session["IdRolSesion"].ToString() == "1")
-                        { 
-                            <li>
-                                <a class="sidenav-item-link" href="@Url.Action("ConsultarUsuarios","Usuario")">
-                                    <i class="mdi mdi-wechat"></i>
-                                    <span class="nav-text">Usuarios</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidenav-item-link" href="@Url.Action("ConsultarMantProductos","Producto")">
-                                    <i class="mdi mdi-phone"></i>
-                                    <span class="nav-text">Productos</span>
-                                </a>
-                            </li>
-                        }
-
-                        <li>
-                            <a class="sidenav-item-link" href="@Url.Action("VerCarritoCompras","Carrito")">
-                                <i class="mdi mdi-phone"></i>
-                                <span class="nav-text">Pagar</span>
-                            </a>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Principal","Home")">Productos</a>
                         </li>
-                        <li>
-                            <a class="sidenav-item-link" href="@Url.Action("ConsultarCompras","Carrito")">
-                                <i class="mdi mdi-phone"></i>
-                                <span class="nav-text">Mis Productos</span>
-                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("VerCarritoCompras","Carrito")">Pagar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ConsultarCompras","Carrito")">Mis Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link dropdown">
+                                @if (Session["IdRolSesion"].ToString() == "1")
+                                {
+                                    <div class="nav-item dropdown d-none d-lg-inline-block">
+                                        <a class="d-none d-lg-inline-block dropdown-toggle text-black text-decoration-none" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span>Modo Admin</span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminDropdown">
+                                            <a class="dropdown-item" href="@Url.Action("ConsultarUsuarios","Usuario")">Usuarios</a>
+                                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductos","Producto")">Productos (Admin)</a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </aside>
+                <div class="align-self-center d-flex">
+                    <div class="text-black">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span>
+                                <i class="fa fa-user mx-2"></i>
+                                <span class="navbar-sm-brand text-decoration-none">@User.Identity.Name</span>
+                                <span class="mx-2">|</span>
+                                <span class="navbar-sm-brand text-decoration-none">@Session["RolSesion"].ToString()</span>
+                            </span>
+                        }
 
-        <div class="page-wrapper">
-
-            @*Header*@
-            <header class="main-header" id="header">
-                <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-
-                    <button id="sidebar-toggler" class="sidebar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
-
-                    <span class="page-title"></span>
-
-                    <div class="navbar-right ">
-                        <div class="search-form">
-                            <form action="index.html" method="get">
-                                @*<div class="input-group input-group-sm" id="input-group-search">
-                                    <input type="text" autocomplete="off" name="query" id="search-input" class="form-control" placeholder="Buscar" />
-                                </div>*@
-                            </form>
+                            <span>
+                                <i class="fa fa-cart-plus fa-sm fa-fw me-2"></i>
+                                <span class="navbar-sm-brand text-black">Carrito: @Session["Cantidad"].ToString()</span>
+                            </span>
+                            <span>
+                                <i class="fa fa-money fa-sm fa-fw me-2"></i>
+                                <span class="navbar-sm-brand text-black">IVA: @Session["SubTotal"].ToString() + IVA</span>
+                            </span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Modal -->
+        <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="w-100 pt-1 mb-5 text-right">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                        <button type="submit" class="input-group-text bg-success text-light">
+                            <i class="fa fa-fw fa-search text-white"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-                        <i class="fa fa-cart-plus fa-lg"></i> &nbsp;&nbsp; @Session["Cantidad"].ToString() &nbsp;&nbsp;
-                        <i class="fa fa-money fa-lg"></i> &nbsp;&nbsp; @Session["SubTotal"].ToString() + IVA &nbsp;&nbsp;
+        <div class="content-wrapper">
+            <div class="content">
+                <!-- Contenido -->
+                @RenderBody()
+            </div>
+        </div>
 
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown user-menu">
-                                <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <span class="d-none d-lg-inline-block">@Session["NombreSesion"].ToString()</span>
-                                    @Session["RolSesion"].ToString()
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a class="dropdown-link-item" href="@Url.Action("Cambiar","Usuario")">
-                                            <i class="mdi mdi-account-outline"></i>
-                                            Cambiar Contraseña
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <a class="dropdown-link-item" href="@Url.Action("CerrarSesion","Usuario")">
-                                            <i class="mdi mdi-logout"></i> Cerrar Sesión
-                                        </a>
-                                    </li>
-                                </ul>
+        <!-- Footer -->
+        <footer class="bg-dark" id="tempaltemo_footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4 pt-5">
+                        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Game Over</h2>
+                        <ul class="list-unstyled text-light footer-link-list">
+                            <li>
+                                <i class="fas fa-map-marker-alt fa-fw"></i>
+                                San Jose
+                            </li>
+                            <li>
+                                <i class="fa fa-phone fa-fw"></i>
+                                <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope fa-fw"></i>
+                                <a class="text-decoration-none">Gameover@company.com</a>
                             </li>
                         </ul>
                     </div>
-                </nav>
-            </header>
 
-            <div class="content-wrapper">
-                <div class="content">
+                    <div class="col-md-4 pt-5">
+                        <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+                        <ul class="list-unstyled text-light footer-link-list">
+                            <li><a class="text-decoration-none" href="#">Mouse</a></li>
+                            <li><a class="text-decoration-none" href="#">Teclados</a></li>
+                            <li><a class="text-decoration-none" href="#">Audífonos</a></li>
+                        </ul>
+                    </div>
 
-                    @*Contenido*@
-                    @RenderBody()
+                    <div class="col-md-4 pt-5">
+                        <h2 class="h2 text-light border-bottom pb-3 border-light">Info</h2>
+                        <ul class="list-unstyled text-light footer-link-list">
+                            <li><a class="text-decoration-none" href="#">Página principal</a></li>
+                            <li><a class="text-decoration-none" href="#">Sobre nosotros</a></li>
+                            <li><a class="text-decoration-none" href="#">Contacto</a></li>
+                        </ul>
+                    </div>
 
+                </div>
+
+                <div class="row text-light mb-4">
+                    <div class="col-12 mb-3">
+                        <div class="w-100 my-3 border-top border-light"></div>
+                    </div>
+                    <div class="col-auto me-auto">
+                        <ul class="list-inline text-left footer-icons">
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            </li>
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                            </li>
+                            <li class="list-inline-item border border-light rounded-circle text-center">
+                                <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            @*Footer*@
-            <footer class="footer mt-auto">
-                <div class="copyright bg-white">
-                    <p>
-                        &copy; @DateTime.Now.Year Copyright MN WEB
-                    </p>
+            <div class="w-100 bg-black py-3">
+                <div class="container">
+                    <div class="row pt-2">
+                        <div class="col-12">
+                            <p class="text-left text-light">
+                                Copyright &copy; 2023 Game Over
+                                | Designed by <a rel="sponsored" href="" target="_blank">Proyecto Progra</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </footer>
+            </div>
 
-        </div>
-    </div>
+        </footer>
+        <!-- End Footer -->
+        <!-- Start Script -->
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+        <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/templatemo.js"></script>
+        <script src="assets/js/custom.js"></script>
+        <!-- End Script -->
 
-    <script src="~/WebStyles/plugins/jquery/jquery.min.js"></script>
-    <script src="~/WebStyles/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/WebStyles/plugins/simplebar/simplebar.min.js"></script>
-    <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
-    <script src="~/WebStyles/js/mono.js"></script>
-    <script src="~/WebStyles/js/chart.js"></script>
-    <script src="~/WebStyles/js/map.js"></script>
-    <script src="~/WebStyles/js/custom.js"></script>
+    </body>
 
-</body>
 </html>

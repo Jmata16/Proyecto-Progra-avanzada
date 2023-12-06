@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GO_WEB.Entities.ProductoEnt>
 
 @{
-    ViewBag.Title = "ConsultarUsuarios";
+    ViewBag.Title = "ConsultarMantProductos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
             <div class="card-header">
                 <h2>Productos</h2>
             </div>
-
+            <br />
             <div class="row">
                 <div class="col-lg-1">
                 </div>
@@ -52,7 +52,7 @@
                                     <td style="width:10%">@item.Stock</td>
                                     <td style="width:15%">@item.Precio</td>
                                     <td style="width:15%">@item.NombreCategoria</td>
-                                    <td style="width:20%"><img src="@item.Imagen" class="card-img-top" alt="..." width="150" height="100" /></td>
+                                    <td style="width:20%"><img src="@item.Imagen" class="card-img-top" alt="..." width="150" height="150" /></td>
                                     <td style="width:10%;text-align:center">
                                         <a href="@Url.Action("Editar","Producto", new { q = item.IdProducto })"><i class="fa fa-pencil fa-lg"></i></a>
                                     </td>

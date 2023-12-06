@@ -21,6 +21,15 @@ namespace GO_WEB.Controllers
             return View(productos);
         }
 
+
+        [HttpGet]
+        public ActionResult ShowProductos()
+        {
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
+        }
+
+
         [HttpGet]
         public ActionResult IniciarSesion()
         {

@@ -4,81 +4,105 @@
     ViewBag.Title = "Principal";
 }
 
-@if (ViewBag.MsjPantalla != null)
-{
-    <div style="color:white" class="alert alert-primary" role="alert">
-        @ViewBag.MsjPantalla
-    </div>
-}
+<style>
+    .custom-card-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
 
-<div class="row" style="margin-top:40px;">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-3">
-            <div class="card" style="width: 100%;">
-                <img src="@item.Imagen" class="card-img-top" alt="..." width="200" height="200" />
-                <div class="card-body">
-                    <h5 class="card-title">@item.Nombre</h5>
-                    <p class="card-text">Disponibles : @item.Stock <br> Precio: $ @item.Precio <br> Categoria:  @item.NombreCategoria</p>
-                </div>
-                <div class="row" style="text-align:center;">
-                    <div class="col-1"></div>
-                    <div class="col-5">
-                        @if (item.Stock > 0)
-                        {
-                            <a style="font-weight:bold" href="@Url.Action("AgregarProductoCarrito","Carrito", new { q = item.IdProducto })" class="btn">Agregar</a>
-                        }
-                        else
-                        {
-                            <p style="font-weight:bold; color:red;">Producto Agotado</p>
-                        }
-                    </div>
-                    <div class="col-5">
-                        <button type="button" style="font-weight:bold" class="btn pasarDatosModal" data-toggle="modal" data-target="#exampleModal"
-                                data-name="@item.Nombre"
-                                data-description="@item.Descripcion">
-                            Ver Más
-                        </button>
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <h1 class="h1">Todos los productos</h1>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img src="@item.Imagen" class="card-img-top custom-card-img" alt="Producto Image" />
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Nombre</h5>
+                        <p class="card-text">
+                            Disponibles: @item.Stock <br />
+                            Precio: $@item.Precio <br />
+                            Categoria: @item.NombreCategoria
+                        </p>
+
+                        <div class="d-grid gap-2">
+                            @if (item.Stock > 0)
+                            {
+                                <a href="@Url.Action("AgregarProductoCarrito", "Carrito", new { q = item.IdProducto })" class="btn btn-success">Agregar al Carrito</a>
+                            }
+                            else
+                            {
+                                <p class="font-weight-bold text-danger mb-0" style="font-weight: bold; font-size: 1.2em;">Producto Agotado</p>
+                            }
+
+                            <button type="button" class="btn text-white btn-info mt-2 verMasBtn" data-name="@item.Nombre"
+                                    data-description="@item.Descripcion"
+                                    data-image="@item.Imagen"
+                                    data-stock="@item.Stock"
+                                    data-precio="@item.Precio"
+                                    data-categoria="@item.NombreCategoria">
+                                Ver Más
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br /><br />
-        </div>
-    }
-</div>
+        }
+    </div>
+</section>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="productModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">< id="pTitulo"></></h5>
+                <h5 class="modal-title" id="productModalLabel">Detalles del Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-
-                <textarea style="background-color:white; width:100%; resize:none; border:0px; text-align:justify; padding:10px" rows="10" disabled="disabled" id="txtDesc"></textarea>
-
-                <br /><br />
-
-                <iframe id="txtVideo" height="350" style="border:0px;padding:10px"
-                        src="">
-                </iframe>
-
+                <h3 id="pTitulo"></h3>
+                <img src="" id="modalImage" class="img-fluid" style="max-width: 60%;" alt="Producto Image" />
+                <p id="txtDesc"></p>
+                <p id="txtStock">Disponibles: </p>
+                <p id="txtPrecio">Precio: $</p>
+                <p id="txtCategoria">Categoria: </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $(document).on('click', '.verMasBtn', function () {
+            var productName = $(this).data('name');
+            var productDescription = $(this).data('description');
+            var productImage = $(this).data('image');
+            var stock = $(this).data('stock');
+            var precio = $(this).data('precio');
+            var categoria = $(this).data('categoria');
 
-    $(".pasarDatosModal").click(function () {
-        $("#pTitulo").text($(this).attr('data-name'));
-        $("#txtDesc").text($(this).attr('data-description'));
-        $("#txtVideo").attr("src", $(this).attr('data-video'));
-    })
+            $("#pTitulo").text(productName);
+            $("#txtDesc").text(productDescription);
+            $("#modalImage").attr("src", productImage);
+            $("#txtStock").text("Disponibles: " + stock);
+            $("#txtPrecio").text("Precio: $" + precio);
+            $("#txtCategoria").text("Categoria: " + categoria);
 
+            $('#productModal').modal('show');
+        });
+    });
 </script>

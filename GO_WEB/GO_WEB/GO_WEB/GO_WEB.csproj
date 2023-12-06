@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entities\CarritoEnt.cs" />
     <Compile Include="Entities\CategoriaEnt.cs" />
@@ -197,6 +198,36 @@
     <Compile Include="Models\ProductoNoLogModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="images\1.png" />
+    <Content Include="images\2.png" />
+    <Content Include="images\3.png" />
+    <Content Include="images\4.png" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\banner.jpg" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\contact_g.jpg" />
+    <Content Include="images\cos.png" />
+    <Content Include="images\cross.png" />
+    <Content Include="images\footer.jpg" />
+    <Content Include="images\leptop.jpg" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logo1.png" />
+    <Content Include="images\menu_icon.png" />
+    <Content Include="images\pc.png" />
+    <Content Include="images\pct.png" />
+    <Content Include="images\product1.png" />
+    <Content Include="images\product2.png" />
+    <Content Include="images\product3.png" />
+    <Content Include="images\product4.png" />
+    <Content Include="images\product5.png" />
+    <Content Include="images\product6.png" />
+    <Content Include="images\product7.png" />
+    <Content Include="images\product8.png" />
+    <Content Include="images\product9.png" />
+    <Content Include="images\thr.png" />
+    <Content Include="images\thr1.png" />
+    <Content Include="images\thr2.png" />
     <Content Include="Templates\css\StyleSheet.css" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +317,7 @@
     <Content Include="Templates\webfonts\fa-solid-900.svg" />
     <Content Include="Templates\webfonts\slick.svg" />
     <Content Include="WebStyles\css\style.css" />
+    <Content Include="WebStyles\css\style1.css" />
     <Content Include="WebStyles\images\elements\cc1.jpg" />
     <Content Include="WebStyles\images\elements\cc1a.jpg" />
     <Content Include="WebStyles\images\elements\cc1b.jpg" />
@@ -1444,6 +1476,7 @@
     <Content Include="WebStyles\plugins\toaster\toastr.css" />
     <Content Include="WebStyles\plugins\toaster\toastr.min.css" />
     <Content Include="WebStyles\plugins\toaster\toastr.min.js" />
+    <Content Include="images\.DS_Store" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1525,10 +1558,10 @@
     <Content Include="WebStyles\plugins\toaster\toastr.js.map" />
     <Content Include="Views\Home\IniciarSesion.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ShowProductos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
     <Folder Include="Views\ProdcutoNoLog\" />
   </ItemGroup>
   <ItemGroup>
