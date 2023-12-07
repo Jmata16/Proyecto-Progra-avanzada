@@ -3,9 +3,7 @@
     "",
     "\\GO_API",
     "\\GO_API\\GO_API",
-    "\\GO_API\\GO_API\\Controllers",
-    "\\GO_API\\GO_API\\Entities",
-    "\\GO_API\\GO_API\\Models"
+    "\\GO_API\\GO_API\\Controllers"
   ],
   "SelectedNode": "\\GO_API\\GO_API\\Controllers\\ProductoController.cs",
   "PreviewInSolutionExplorer": false

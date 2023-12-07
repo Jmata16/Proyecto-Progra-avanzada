@@ -53,34 +53,56 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="" id="modalImage" class="img-fluid" alt="Producto Image" />
+                                </div>
+                                <div class="col-md-6">
+                                    <h3 id="pTitulo" class="mb-3"></h3>
+                                    <p id="txtDesc"></p>
+                                    <p id="txtStock">Disponibles: </p>
+                                    <p id="txtPrecio">Precio: $</p>
+                                    <p id="txtCategoria">Categoria: </p>
+
+                                    @if (item.Stock > 0)
+                                    {
+                                        <a href="@Url.Action("AgregarProductoCarrito", "Carrito", new { q = item.IdProducto })" class="btn btn-success btn-lg mb-3">Agregar al Carrito</a>
+                                    }
+                                    else
+                                    {
+                                        <p class="font-weight-bold text-danger" style="font-size: 1.2em;">Producto Agotado</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
         }
     </div>
 </section>
 
 
-<div class="modal" id="productModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">Detalles del Producto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h3 id="pTitulo"></h3>
-                <img src="" id="modalImage" class="img-fluid" style="max-width: 60%;" alt="Producto Image" />
-                <p id="txtDesc"></p>
-                <p id="txtStock">Disponibles: </p>
-                <p id="txtPrecio">Precio: $</p>
-                <p id="txtCategoria">Categoria: </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

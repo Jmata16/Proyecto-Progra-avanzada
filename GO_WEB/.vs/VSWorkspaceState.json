@@ -3,7 +3,7 @@
     "",
     "\\GO_WEB",
     "\\GO_WEB\\GO_WEB",
-    "\\GO_WEB\\GO_WEB\\Controllers",
+    "\\GO_WEB\\GO_WEB\\Models",
     "\\GO_WEB\\GO_WEB\\Templates",
     "\\GO_WEB\\GO_WEB\\Templates\\css",
     "\\GO_WEB\\GO_WEB\\Views",
@@ -11,6 +11,6 @@
     "\\GO_WEB\\GO_WEB\\Views\\Home",
     "\\GO_WEB\\GO_WEB\\Views\\Shared"
   ],
-  "SelectedNode": "\\GO_WEB\\GO_WEB\\Controllers\\ProductoController.cs",
+  "SelectedNode": "\\GO_WEB\\GO_WEB\\Models\\ProductoModel.cs",
   "PreviewInSolutionExplorer": false
 }
