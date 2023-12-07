@@ -13,6 +13,7 @@ namespace MN_WEB.Controllers
     public class ProductoController : Controller
     {
         ProductoModel model = new ProductoModel();
+        CarritoModel modelCarrito = new CarritoModel();
 
         [HttpGet]
         public ActionResult ConsultarMantProductos()
@@ -105,8 +106,55 @@ namespace MN_WEB.Controllers
             return RedirectToAction("ConsultarMantProductos", "Producto");
         }
 
+        [HttpGet]
+        public ActionResult Mouse()
+        {
+            var datos = modelCarrito.ConsultarCarrito(long.Parse(Session["IdSesion"].ToString()));
+            Session["Cantidad"] = datos.Count();
+            Session["SubTotal"] = datos.Sum(x => x.Precio);
+            Session["Total"] = datos.Sum(x => x.Precio) + (datos.Sum(x => x.Precio) * 0.13M);
+
+            var Productos = model.ConsultarProductos();
+            return View(Productos);
+        }
+
+        [HttpGet]
+        public ActionResult Audífonos()
+        {
+            var datos = modelCarrito.ConsultarCarrito(long.Parse(Session["IdSesion"].ToString()));
+            Session["Cantidad"] = datos.Count();
+            Session["SubTotal"] = datos.Sum(x => x.Precio);
+            Session["Total"] = datos.Sum(x => x.Precio) + (datos.Sum(x => x.Precio) * 0.13M);
+
+            var Productos = model.ConsultarProductos();
+            return View(Productos);
+        }
 
 
+        [HttpGet]
+        public ActionResult Monitores()
+        {
+            var datos = modelCarrito.ConsultarCarrito(long.Parse(Session["IdSesion"].ToString()));
+            Session["Cantidad"] = datos.Count();
+            Session["SubTotal"] = datos.Sum(x => x.Precio);
+            Session["Total"] = datos.Sum(x => x.Precio) + (datos.Sum(x => x.Precio) * 0.13M);
+
+            var Productos = model.ConsultarProductos();
+            return View(Productos);
+        }
+
+
+        [HttpGet]
+        public ActionResult Teclados()
+        {
+            var datos = modelCarrito.ConsultarCarrito(long.Parse(Session["IdSesion"].ToString()));
+            Session["Cantidad"] = datos.Count();
+            Session["SubTotal"] = datos.Sum(x => x.Precio);
+            Session["Total"] = datos.Sum(x => x.Precio) + (datos.Sum(x => x.Precio) * 0.13M);
+
+            var Productos = model.ConsultarProductos();
+            return View(Productos);
+        }
 
 
     }

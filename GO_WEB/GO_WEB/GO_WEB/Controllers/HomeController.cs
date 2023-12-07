@@ -21,14 +21,39 @@ namespace GO_WEB.Controllers
             return View(productos);
         }
 
-
+        // Productos que se ven sin Log in
         [HttpGet]
         public ActionResult ShowProductos()
         {
             var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
             return View(productos);
         }
+        [HttpGet]
+        public ActionResult ShowMouse()
+        {
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
+        }
+        [HttpGet]
+        public ActionResult ShowAudífonos()
+        {
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
+        }
+        [HttpGet]
+        public ActionResult ShowMonitores()
+        {
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
+        }
+        [HttpGet]
+        public ActionResult ShowTeclados()
+        {
+            var productos = modelProductoNoLogModel.ConsultarProductosNOLogIn();
+            return View(productos);
+        }
 
+        // Fin Productos que se ven sin Log in
 
         [HttpGet]
         public ActionResult IniciarSesion()

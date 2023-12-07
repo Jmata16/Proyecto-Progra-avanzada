@@ -1559,6 +1559,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ShowProductos.cshtml" />
     <Content Include="Views\Producto\Editar.cshtml" />
+    <Content Include="Views\Producto\Mouse.cshtml" />
+    <Content Include="Views\Producto\Audífonos.cshtml" />
+    <Content Include="Views\Producto\Monitores.cshtml" />
+    <Content Include="Views\Producto\Teclados.cshtml" />
+    <Content Include="Views\Home\ShowMouse.cshtml" />
+    <Content Include="Views\Home\ShowAudífonos.cshtml" />
+    <Content Include="Views\Home\ShowMonitores.cshtml" />
+    <Content Include="Views\Home\ShowTeclados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

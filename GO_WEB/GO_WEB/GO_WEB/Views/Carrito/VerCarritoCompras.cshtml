@@ -4,89 +4,92 @@
     ViewBag.Title = "VerCarritoCompras";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section>
+    <div class="container">
 
-<div class="row">
+        <div class="col-xl-12">
 
-    <div class="col-xl-12">
+            <div class="card card-default">
 
-        <div class="card card-default">
-
-            <div class="card-header">
-                <h2>Productos Agregados</h2>
-            </div>
-
-            @if (Model.Count() == 0)
-            {
-                <div style="color:black; text-align:center" class="alert alert-success" role="alert">
-                    No hay Productos por cancelar en este momento...
+                <div class="card-header">
+                    <h2>Productos Agregados</h2>
                 </div>
                 <br />
                 <br />
-
-                <br />
-                <br />
-
-                <br />
-                <br />
-                <br />
-                <br />
-
-            }
-            else
-            {
-                <div class="row">
-                    <div class="col-lg-1">
+                @if (Model.Count() == 0)
+                {
+                    <div style="color:black; text-align:center" class="alert alert-success" role="alert">
+                        No hay Productos por cancelar en este momento...
                     </div>
-                    <div class="col-lg-10">
+                    <br />
+                    <br />
 
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr style="text-align:center">
-                                    <th>Nombre</th>
-                                    <th>Precio</th>
-                                    <th>Impuesto</th>
-                                    <th>Remover</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
+                    <br />
+                    <br />
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-10">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr style="text-align:center">
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Impuesto</th>
+                                        <th>Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Nombre</td>
+                                            <td>@Math.Round(item.Precio, 2)</td>
+                                            <td>@Math.Round(item.Impuesto, 2)</td>
+                                            <td style="text-align:center">
+                                                <a href="@Url.Action("RemoverProductoCarrito","Carrito", new { q = item.IdCarrito })"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    <!-- Add a new row for displaying the count -->
                                     <tr>
-                                        <td>@item.Nombre</td>
-                                        <td>@Math.Round(item.Precio, 2)</td>
-                                        <td>@Math.Round(item.Impuesto, 2)</td>
-                                        <td style="text-align:center">
-                                            <a href="@Url.Action("RemoverProductoCarrito","Carrito", new { q = item.IdCarrito })"><i class="fa fa-trash fa-lg"></i></a>
+                                        <td colspan="4" style="text-align:right; font-weight:bold;">
+                                            Total de productos en el carrito: @Session["Cantidad"]
                                         </td>
                                     </tr>
-                                }
+                                </tbody>
+                            </table>
 
-                                <!-- Add a new row for displaying the count -->
-                                <tr>
-                                    <td colspan="4" style="text-align:right; font-weight:bold;">
-                                        Total de productos en el carrito: @Session["Cantidad"]
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <br />
 
-                        <br />
+                            @using (Html.BeginForm("ConfirmarPago", "Carrito", FormMethod.Post))
+                            {
+                                <input style="width:260px" type="submit" class="btn btn-success" value="Confirmar Pago">
+                                <p style="font-weight:bold">El monto a cancelar es: $ @Math.Round(decimal.Parse(Session["Total"].ToString()), 2) IVI</p>
+                            }
 
-                        @using (Html.BeginForm("ConfirmarPago", "Carrito", FormMethod.Post))
-                        {
-                            <input style="width:260px" type="submit" class="btn btn-success" value="Confirmar Pago">
-                            <p style="font-weight:bold">El monto a cancelar es: $ @Math.Round(decimal.Parse(Session["Total"].ToString()), 2) IVI</p>
-                        }
-
+                        </div>
                     </div>
-                </div>
 
-            }
+                }
 
-            <br />
-            <br />
+                <br />
+                <br />
 
+            </div>
         </div>
     </div>
-</div>
-
+</section>
+<br />
+<br />

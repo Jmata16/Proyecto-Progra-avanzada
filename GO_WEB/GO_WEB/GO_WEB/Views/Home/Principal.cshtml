@@ -12,10 +12,36 @@
     }
 </style>
 
-<section class="container py-5">
-    <div class="row text-center pt-3">
-        <h1 class="h1">Todos los productos</h1>
+
+
+
+
+<!-- Start Banner Hero -->
+<div id="template-mo-zay-hero-carousel" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="container">
+            <div class="row p-5">
+                <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                    <img class="img-fluid" src="~/Templates/img/banner_img_01.jpg" alt="">
+                </div>
+                <div class="col-lg-6 mb-0 d-flex align-items-center">
+                    <div class="text-align-left align-self-center">
+                        <h1 class="h1 text-success"><b>Nuestros</b> Productos</h1>
+                        <h3 class="h2">Los mejores perifericos del Mercado</h3>
+                        <p>
+                            Descubre el mundo de Game Over, donde la victoria comienza con el equipo adecuado.
+                            Mouse, teclados y monitores de alta calidad para llevar tu experiencia de juego al siguiente nivel.
+                            ¡Juega como un profesional, gana como un campeón!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<!-- End Banner Hero -->
+
+<section class="container py-5">
 
     <div class="row">
         @foreach (var item in Model)
@@ -54,8 +80,6 @@
                 </div>
             </div>
 
-
-
             <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
@@ -88,23 +112,9 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
         }
     </div>
 </section>
-
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>

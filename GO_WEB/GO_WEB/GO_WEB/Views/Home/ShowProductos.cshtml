@@ -42,6 +42,29 @@
             height: 300px; /* Ajusta la altura según tus necesidades */
             object-fit: cover;
         }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-item:hover {
+                background-color: #ddd;
+            }
     </style>
 </head>
 <body>
@@ -80,7 +103,19 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("ShowProductos","Home")">Productos</a>
+                            <div class="nav-link dropdown">
+                                <div class="nav-item dropdown d-none d-lg-inline-block">
+                                    <a class="d-none d-lg-inline-block dropdown-toggle text-black text-decoration-none" href="@Url.Action("ShowProductos","Home")" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>Productos</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminDropdown">
+                                        <a class="dropdown-item" href="@Url.Action("ShowMouse","Home")">Mouse</a>
+                                        <a class="dropdown-item" href="@Url.Action("ShowAudífonos","Home")">Audífonos</a>
+                                        <a class="dropdown-item" href="@Url.Action("ShowMonitores","Home")">Monitores</a>
+                                        <a class="dropdown-item" href="@Url.Action("ShowTeclados","Home")">Teclados</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">Sobre nosotros</a>
@@ -115,10 +150,31 @@
             </form>
         </div>
     </div>
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <h1 class="h1">Productos</h1>
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="~/Templates/img/banner_img_01.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left align-self-center">
+                            <h1 class="h1 text-success"><b>Nuestros</b> Productos</h1>
+                            <h3 class="h2">Los mejores perifericos del Mercado</h3>
+                            <p>
+                                Descubre el mundo de Game Over, donde la victoria comienza con el equipo adecuado.
+                                Mouse, teclados y monitores de alta calidad para llevar tu experiencia de juego al siguiente nivel.
+                                ¡Juega como un profesional, gana como un campeón!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- End Banner Hero -->
+    <section class="container py-5">
         <br /><br />
         <br /><br />
 
