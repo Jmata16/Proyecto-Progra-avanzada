@@ -250,3 +250,7 @@ D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\obj\Debug\GO_WEB.csproj.C
 D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\obj\Debug\GO_WEB.csproj.CopyComplete
 D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\obj\Debug\MN_WEB.dll
 D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\obj\Debug\MN_WEB.pdb
+D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\bin\PagedList.dll
+D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\bin\PagedList.Mvc.dll
+D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\bin\PagedList.xml
+D:\Repos\Proyecto-Progra-avanzada\GO_WEB\GO_WEB\GO_WEB\bin\PagedList.Mvc.xml

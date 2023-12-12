@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GO_WEB.Entities.ProductoEnt>
+﻿﻿@model IEnumerable<GO_WEB.Entities.ProductoEnt>
 
 @{
     ViewBag.Title = "Principal";
@@ -11,10 +11,6 @@
         object-fit: cover;
     }
 </style>
-
-
-
-
 
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide">
@@ -44,7 +40,7 @@
 <section class="container py-5">
 
     <div class="row">
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderBy(p => p.Precio))
         {
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
@@ -136,5 +132,7 @@
 
             $('#productModal').modal('show');
         });
+
+
     });
 </script>

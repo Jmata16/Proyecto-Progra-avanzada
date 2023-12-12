@@ -26,45 +26,40 @@
             <br>
 
             <div class="row">
+
                 <div class="col-lg-1">
                 </div>
                 <div class="col-lg-10">
+                    <p>Total de productos: @Model.Count()</p>
 
                     <table class="table table-bordered">
                         <thead>
                             <tr style="text-align:center">
                                 <th>Nombre</th>
-                                <th>Descripccion</th>
+                                <th>Descripción</th>
                                 <th>Stock</th>
                                 <th>Precio</th>
-                                <th>Categoria</th>
+                                <th>Categoría</th>
                                 <th>Imagen</th>
                                 <th>Editar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="productTableBody">
 
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td style="width:10%">@item.Nombre</td>
-                                    <td style="width:20%">@item.Descripcion</td>
-                                    <td style="width:10%">@item.Stock</td>
-                                    <td style="width:15%">@item.Precio</td>
-                                    <td style="width:15%">@item.NombreCategoria</td>
-                                    <td style="width:20%"><img src="@item.Imagen" class="card-img-top" alt="..." width="150" height="150" /></td>
-                                    <td style="width:10%;text-align:center">
-                                        <a href="@Url.Action("Editar","Producto", new { q = item.IdProducto })"><i class="fa fa-pencil fa-lg"></i></a>
-                                    </td>
-                                </tr>
-                            }
+                            
 
                         </tbody>
-
                     </table>
+
+                    <nav>
+                        <ul id="pagination" class="pagination justify-content-center">
+                            
+                        </ul>
+                    </nav>
 
                 </div>
             </div>
+
             <br />
             <br />
 
@@ -73,3 +68,60 @@
 </div>
 <br />
 <br />
+
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var products = @Html.Raw(Json.Encode(Model));
+            var itemsPerPage = 7;
+
+            function displayProducts(page) {
+                var startIndex = (page - 1) * itemsPerPage;
+                var endIndex = startIndex + itemsPerPage;
+                var currentPageProducts = products.slice(startIndex, endIndex);
+
+                var tableBody = document.getElementById('productTableBody');
+                tableBody.innerHTML = '';
+
+                currentPageProducts.forEach(function (item) {
+                    var row = '<tr>' +
+                        '<td style="width:10%">' + item.Nombre + '</td>' +
+                        '<td style="width:20%">' + item.Descripcion + '</td>' +
+                        '<td style="width:10%">' + item.Stock + '</td>' +
+                        '<td style="width:15%">' + item.Precio + '</td>' +
+                        '<td style="width:15%">' + item.NombreCategoria + '</td>' +
+                        '<td style="width:20%"><img src="' + item.Imagen + '" class="card-img-top" alt="..." width="150" height="150" /></td>' +
+                        '<td style="width:10%;text-align:center"><a href="' + '@Url.Action("Editar","Producto")?q=' + item.IdProducto + '"><i class="fa fa-pencil fa-lg"></i></a></td>' +
+                        '</tr>';
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            function displayPagination() {
+                var totalProducts = products.length;
+                var totalPages = Math.ceil(totalProducts / itemsPerPage);
+
+                var pagination = document.getElementById('pagination');
+                pagination.innerHTML = '';
+
+                for (var i = 1; i <= totalPages; i++) {
+                    var li = document.createElement('li');
+                    li.classList.add('page-item');
+                    var a = document.createElement('a');
+                    a.classList.add('page-link');
+                    a.href = '#';
+                    a.textContent = i;
+                    a.addEventListener('click', function () {
+                        var page = parseInt(this.textContent);
+                        displayProducts(page);
+                    });
+                    li.appendChild(a);
+                    pagination.appendChild(li);
+                }
+            }
+
+            displayProducts(1);
+            displayPagination();
+        });
+    </script>
+}
