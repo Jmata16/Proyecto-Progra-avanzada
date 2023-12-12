@@ -85,7 +85,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index">
                 Game Over
             </a>
 
@@ -128,7 +128,6 @@
         </div>
     </nav>
     <!-- Close Header -->
-
     <!-- Start Banner Hero -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide">
         <div class="carousel-inner">
@@ -162,20 +161,20 @@
         <br /><br />
         <br /><br />
 
-              <div class="row">
-                  @foreach (var item in Model.Take(4))
-                  {
-                      <div class="col-lg-3 mb-4">
-                          <div class="card h-100">
-                              <img src="@item.Imagen" class="card-img-top custom-card-img" alt="..." />
-                              <div class="card-body border-top">
-                                  <h5 class="card-title">@item.Nombre</h5>
-                                  <p class="card-text">Disponibles: @item.Stock <br> Precio: $@item.Precio <br> Categoria: @item.NombreCategoria</p>
-                              </div>
-                          </div>
-                      </div>
-                  }
-              </div>
+        <div class="row">
+            @foreach (var item in Model.Take(4))
+            {
+                <div class="col-lg-3 mb-4">
+                    <div class="card h-100">
+                        <img src="@item.Imagen" class="card-img-top custom-card-img" alt="..." />
+                        <div class="card-body border-top">
+                            <h5 class="card-title">@item.Nombre</h5>
+                            <p class="card-text">Disponibles: @item.Stock <br> Precio: $@item.Precio <br> Categoria: @item.NombreCategoria</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
 
 
 
@@ -207,18 +206,16 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Mouse</a></li>
-                        <li><a class="text-decoration-none" href="#">Teclados</a></li>
-                        <li><a class="text-decoration-none" href="#">Audifonos</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("ShowMouse","Home")">Mouse</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("ShowTeclados","Home")">Teclados</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("ShowAudífonos","Home")">Audífonos</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("ShowMonitores","Home")">Monitores</a></li>
                     </ul>
                 </div>
-
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Página principal</a></li>
-                        <li><a class="text-decoration-none" href="#">Sobre nosotros</a></li>
-                        <li><a class="text-decoration-none" href="#">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index","Home")">Página principal</a></li>
                     </ul>
                 </div>
 
