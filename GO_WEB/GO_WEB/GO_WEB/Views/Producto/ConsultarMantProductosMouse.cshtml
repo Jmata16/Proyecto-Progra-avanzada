@@ -1,0 +1,164 @@
+﻿@model IEnumerable<GO_WEB.Entities.ProductoEnt>
+
+@{
+    ViewBag.Title = "ConsultarMantProductosMouse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+        .dropdown-menu a {
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-menu a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+</style>
+<div class="container">
+    <div class="col-xl-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <h2>Monitores</h2>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    <div class="btn-group">
+                        <a href="@Url.Action("Agregar","Producto")" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                           href="@Url.Action("ConsultarMantProductos","Producto")">
+                            Categoría
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosMouse","Producto")">Mouse</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosTeclados","Producto")">Teclado</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosAudifonos","Producto")">Audífono</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosMonitores","Producto")">Monitores</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="text-align:center">
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th>Imagen</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+                        </tbody>
+                    </table>
+
+                    <nav>
+                        <ul id="pagination" class="pagination justify-content-center">
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var products = @Html.Raw(Json.Encode(Model));
+            var itemsPerPage = 7;
+            var filteredProducts = products.filter(product => product.NombreCategoria === 'Mouse');
+
+            function displayProducts(page) {
+                var startIndex = (page - 1) * itemsPerPage;
+                var endIndex = startIndex + itemsPerPage;
+                var currentPageProducts = filteredProducts.slice(startIndex, endIndex);
+
+                var tableBody = document.getElementById('productTableBody');
+                tableBody.innerHTML = '';
+
+                currentPageProducts.forEach(function (item) {
+                    var row = '<tr>' +
+                        '<td style="width:10%">' + item.Nombre + '</td>' +
+                        '<td style="width:20%">' + item.Descripcion + '</td>' +
+                        '<td style="width:10%">' + item.Stock + '</td>' +
+                        '<td style="width:15%">' + item.Precio + '</td>' +
+                        '<td style="width:15%">' + item.NombreCategoria + '</td>' +
+                        '<td style="width:20%"><img src="' + item.Imagen + '" class="card-img-top" alt="..." width="150" height="150" /></td>' +
+                        '<td style="width:10%;text-align:center"><a href="' + '@Url.Action("Editar","Producto")?q=' + item.IdProducto + '"><i class="fa fa-pencil fa-lg"></i></a></td>' +
+                        '</tr>';
+                    tableBody.innerHTML += row;
+                });
+            }
+
+            function displayPagination() {
+                var totalProducts = filteredProducts.length;
+                var totalPages = Math.ceil(totalProducts / itemsPerPage);
+
+                var pagination = document.getElementById('pagination');
+                pagination.innerHTML = '';
+
+                for (var i = 1; i <= totalPages; i++) {
+                    var li = document.createElement('li');
+                    li.classList.add('page-item');
+                    var a = document.createElement('a');
+                    a.classList.add('page-link');
+                    a.href = '#';
+                    a.textContent = i;
+                    a.addEventListener('click', function () {
+                        var page = parseInt(this.textContent);
+                        displayProducts(page);
+                    });
+                    li.appendChild(a);
+                    pagination.appendChild(li);
+                }
+            }
+
+            displayProducts(1);
+            displayPagination();
+        });
+    </script>
+}

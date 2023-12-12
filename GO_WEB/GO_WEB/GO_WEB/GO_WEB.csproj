@@ -1574,6 +1574,10 @@
     <Content Include="Views\Home\ShowAudífonos.cshtml" />
     <Content Include="Views\Home\ShowMonitores.cshtml" />
     <Content Include="Views\Home\ShowTeclados.cshtml" />
+    <Content Include="Views\Producto\ConsultarMantProductosMouse.cshtml" />
+    <Content Include="Views\Producto\ConsultarMantProductosMonitores.cshtml" />
+    <Content Include="Views\Producto\ConsultarMantProductosAudifonos.cshtml" />
+    <Content Include="Views\Producto\ConsultarMantProductosTeclados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

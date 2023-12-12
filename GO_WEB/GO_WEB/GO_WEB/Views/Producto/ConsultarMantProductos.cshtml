@@ -5,67 +5,108 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+        .dropdown-menu a {
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-menu a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+
+</style>
+
 <div class="container">
-
     <div class="col-xl-12">
-
         <div class="card card-default">
-
             <div class="card-header">
                 <h2>Productos</h2>
             </div>
             <br />
             <div class="row">
-                <div class="col-lg-1">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    <div class="btn-group">
+                        <a href="@Url.Action("Agregar","Producto")" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar
+                        </a>
+                    </div>
                 </div>
-                <div class="col-lg-10">
-                    <a href="@Url.Action("Agregar","Producto")" class="btn btn-primary"> <i class="fa fa-plus"></i>&nbsp;&nbsp; Agregar </a>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="row">
-
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-10">
-                    <p>Total de productos: @Model.Count()</p>
-
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr style="text-align:center">
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Stock</th>
-                                <th>Precio</th>
-                                <th>Categoría</th>
-                                <th>Imagen</th>
-                                <th>Editar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productTableBody">
-
-                            
-
-                        </tbody>
-                    </table>
-
-                    <nav>
-                        <ul id="pagination" class="pagination justify-content-center">
-                            
-                        </ul>
-                    </nav>
-
+                <div class="col-lg-2">
+                    <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           href="@Url.Action("ConsultarMantProductos","Producto")">
+                            Categoría
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosMouse","Producto")">Mouse</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosTeclados","Producto")">Teclado</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosAudifonos","Producto")">Audífono</a>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarMantProductosMonitores","Producto")">Monitores</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+                <br>
 
-            <br />
-            <br />
+                <div class="row">
+
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-10">
+                        <p>Total de productos: @Model.Count()</p>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr style="text-align:center">
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Stock</th>
+                                    <th>Precio</th>
+                                    <th>Categoría</th>
+                                    <th>Imagen</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                            </tbody>
+                        </table>
+
+                        <nav>
+                            <ul id="pagination" class="pagination justify-content-center">
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+            </div>
 
         </div>
-    </div>
-</div>
+        </div>
+
 <br />
 <br />
 

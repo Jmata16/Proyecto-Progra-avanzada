@@ -22,6 +22,54 @@ namespace MN_WEB.Controllers
             return View(datos);
         }
 
+
+
+
+        [HttpGet]
+        public ActionResult ConsultarMantProductosMouse()
+        {
+            var datos = model.ConsultarProductos();
+            return View(datos);
+        }
+
+
+        [HttpGet]
+        public ActionResult ConsultarMantProductosMonitores()
+        {
+            var datos = model.ConsultarProductos();
+            return View(datos);
+        }
+
+        [HttpGet]
+        public ActionResult ConsultarMantProductosAudifonos()
+        {
+            var datos = model.ConsultarProductos();
+            return View(datos);
+        }
+        [HttpGet]
+        public ActionResult ConsultarMantProductosTeclados()
+        {
+            var datos = model.ConsultarProductos();
+            return View(datos);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpGet]
         public ActionResult Agregar()
         {
